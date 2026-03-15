@@ -41,6 +41,15 @@ const EventSigner = require('./packages/fss/EventSigner');
 const SignatureVerifier = require('./packages/fss/SignatureVerifier');
 const FSSAdapter = require('./packages/fss/FSSAdapter');
 const OutboxRelay = require('./packages/fss/OutboxRelay');
+const FederatedStateApplier = require('./packages/fss/FederatedStateApplier');
+const convergenceLedger = require('./packages/fss/ConvergenceLedger');
+const conflictDetector = require('./packages/fss/ConflictDetector');
+const RedisVersionStore = require('./packages/fss/RedisVersionStore');
+const driftInspector = require('./packages/fss/DriftInspector');
+const domainFingerprintService = require('./packages/fss/DomainFingerprintService');
+const quarantineStore = require('./packages/fss/QuarantineStore');
+const ReplayEngine = require('./packages/fss/ReplayEngine');
+const regionalRecoveryService = require('./packages/fss/RegionalRecoveryService');
 const { fssReceiver } = require('./fss_facade');
 const TransportEventSigner = require('./packages/fss/transport/EventSigner'); // Renamed to avoid conflict
 const InboxStore = require('./packages/fss/transport/InboxStore');
@@ -93,6 +102,15 @@ module.exports = {
     FssEventEnvelope,
     EventSigner,
     SignatureVerifier,
+    FederatedStateApplier,
+    convergenceLedger,
+    conflictDetector,
+    RedisVersionStore,
+    driftInspector,
+    domainFingerprintService,
+    quarantineStore,
+    ReplayEngine,
+    regionalRecoveryService,
     fssReceiver,
     OutboxRelay,
     InboxStore,

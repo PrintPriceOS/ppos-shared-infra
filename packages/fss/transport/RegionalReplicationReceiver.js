@@ -6,6 +6,7 @@
 const signatureVerifier = require('../SignatureVerifier');
 const federatedAuth = require('../FederatedAuthorizationService');
 const InboxStore = require('./InboxStore');
+const FederatedStateApplier = require('../FederatedStateApplier');
 const path = require('path');
 const fs = require('fs');
 const metricsService = require('../../ops/MetricsService');
@@ -46,6 +47,10 @@ class RegionalReplicationReceiver {
         
         if (storeResult.status === 'ACCEPTED') {
             metricsService.recordRuntimeDecision('fss_receive_accepted', true, 'NORMAL', origin_region);
+            
+            // 4. Deterministic Application (Phase v1.6.0)
+            const applyResult = await FederatedStateApplier.apply(envelope);
+            return { status: applyResult.status };
         }
 
         return { status: storeResult.status };

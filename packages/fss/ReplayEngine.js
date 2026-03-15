@@ -3,15 +3,17 @@ const path = require('path');
 const readline = require('readline');
 const metricsService = require('../ops/MetricsService');
 
+const FederatedStateApplier = require('./FederatedStateApplier');
+
 /**
- * ReplayEngine (Phase 5)
+ * ReplayEngine (Phase 5 / v1.6.0)
  * Processes the regional inbox and applies events to the local state.
  */
 class ReplayEngine {
-    constructor(applier) {
+    constructor(applier = FederatedStateApplier) {
         this.inboxPath = path.join(process.cwd(), '.runtime', 'fss-inbox', 'events.jsonl');
         this.checkpointPath = path.join(process.cwd(), '.runtime', 'fss-inbox', 'replay_checkpoint.json');
-        this.applier = applier; // Functional applier (Phase 7)
+        this.applier = applier;
     }
 
     /**
@@ -43,7 +45,7 @@ class ReplayEngine {
 
                 // Apply to local state
                 if (this.applier) {
-                    await this.applier.apply(envelope);
+                    await this.applier.apply(envelope, { isReplay: true });
                 }
 
                 this.saveCheckpoint(currentLine);

@@ -26,6 +26,10 @@ class PolicyAuthorityResolver {
     getAuthoritativeRegion(namespace = '*') {
         return this.delegatedAuthorities[namespace] || this.globalHub;
     }
+
+    getAuthoritativeRegionId(namespace = '*') {
+        return this.getAuthoritativeRegion(namespace);
+    }
 }
 
 module.exports = PolicyAuthorityResolver;
