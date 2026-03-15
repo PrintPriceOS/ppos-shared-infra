@@ -38,6 +38,13 @@ const stateClassification = require('./packages/region/stateClassification');
 const sanitizationUtils = require('./packages/region/sanitizationUtils');
 const fssAdapter = require('./packages/fss/FSSAdapter');
 const fssEventEnvelope = require('./packages/fss/FssEventEnvelope');
+const { fssReceiver, OutboxRelay } = require('./fss_facade');
+const EventSigner = require('./packages/fss/transport/EventSigner');
+const InboxStore = require('./packages/fss/transport/InboxStore');
+const PolicyAuthorityResolver = require('./packages/federation/PolicyAuthorityResolver');
+const policyCacheManager = require('./packages/federation/PolicyCacheManager');
+const RegionStalenessEvaluator = require('./packages/federation/RegionStalenessEvaluator');
+const emergencyRestrictionManager = require('./packages/federation/EmergencyRestrictionManager');
 
 module.exports = {
     db,
@@ -79,5 +86,13 @@ module.exports = {
     ...stateClassification,
     ...sanitizationUtils,
     fssAdapter,
-    fssEventEnvelope
+    fssEventEnvelope,
+    fssReceiver,
+    OutboxRelay,
+    EventSigner,
+    InboxStore,
+    PolicyAuthorityResolver,
+    policyCacheManager,
+    RegionStalenessEvaluator,
+    emergencyRestrictionManager
 };
