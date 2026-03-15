@@ -21,6 +21,8 @@ const {
 } = require('../ppos-shared-infra');
 
 const subprocessManager = require('./subprocess_manager');
+const workerSanitizer = require('./compliance/workerSanitizer');
+
 
 class PreflightWorker {
     /**
@@ -172,14 +174,17 @@ class PreflightWorker {
             const failureClass = retryManager.classify(err);
             const strategy = retryManager.getStrategy(failureClass, job.attemptsMade);
 
-            console.error(`[WORKER-FAILURE][${failureClass}] Job ${job_id}: ${err.message}`);
+            const sanitizedErr = workerSanitizer.sanitizeError(err);
+            console.error(`[WORKER-FAILURE][${failureClass}] Job ${job_id}: ${sanitizedErr.message}`);
             
             // H3 Hardening: Record Failure Metrics (Phase R13)
             metricsService.recordJobResult(operation, 'FAILED', tId);
 
             // Log to audit if it's a hard failure or quarantine
             if (strategy.action === 'FAIL' || strategy.quarantine) {
-                await this.logFailureAudit(job_id, tId, failureClass, err.message, strategy);
+                const auditPayload = { tenantId, message: err.message, strategy, timestamp: new Date().toISOString() };
+                const sanitizedAudit = workerSanitizer.sanitizeAuditPayload(auditPayload);
+                await this.logFailureAudit(job_id, tId, failureClass, sanitizedAudit.message, sanitizedAudit.strategy);
             }
 
             // Explicitly handle BullMQ retry behavior via strategy if needed

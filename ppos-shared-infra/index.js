@@ -35,6 +35,7 @@ const resourceLifecycleService = require('./packages/governance/resourceLifecycl
 const regionContext = require('./packages/region/RegionContext');
 const regionFilter = require('./packages/region/RegionFilter');
 const stateClassification = require('./packages/region/stateClassification');
+const sanitizationUtils = require('./packages/region/sanitizationUtils');
 const fssAdapter = require('./packages/fss/FSSAdapter');
 const fssEventEnvelope = require('./packages/fss/FssEventEnvelope');
 
@@ -76,6 +77,7 @@ module.exports = {
     regionContext,
     regionFilter,
     ...stateClassification,
+    ...sanitizationUtils,
     fssAdapter,
     fssEventEnvelope
 };

@@ -21,7 +21,7 @@ const ENTITY_MAP = {
     'job_payload': CLASSIFICATIONS.REGIONAL,
     'uploaded_pdf': CLASSIFICATIONS.REGIONAL,
     'quarantine_asset': CLASSIFICATIONS.REGIONAL,
-    'audit_event': CLASSIFICATIONS.REGIONAL, // Default to regional for safety
+    'audit_event': CLASSIFICATIONS.DERIVED,     // Sanitized global replication allowed
     'market_summary': CLASSIFICATIONS.GLOBAL
 };
 
