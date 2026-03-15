@@ -1,0 +1,27 @@
+-- 04_shadow_routing_log.sql
+CREATE TABLE IF NOT EXISTS shadow_routing_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    global_job_id VARCHAR(255) NOT NULL,
+    trace_id VARCHAR(255),
+    customer_tier VARCHAR(50),
+    candidate_count INT,
+    baseline_node_id VARCHAR(255),
+    baseline_mfg_cost DECIMAL(10,2),
+    baseline_distance_km INT,
+    shadow_node_id VARCHAR(255),
+    shadow_total_expected_cost DECIMAL(10,2),
+    shadow_mfg_cost DECIMAL(10,2),
+    shadow_ship_cost DECIMAL(10,2),
+    shadow_risk_cost DECIMAL(10,2),
+    shadow_sla_cost DECIMAL(10,2),
+    shadow_distance_km INT,
+    shadow_policy_mode VARCHAR(50),
+    shadow_runtime_ms INT,
+    shadow_error_code VARCHAR(100),
+    is_divergent BOOLEAN DEFAULT FALSE,
+    is_geo_better BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP(3),
+    INDEX idx_job (global_job_id),
+    INDEX idx_trace (trace_id),
+    INDEX idx_divergent (is_divergent)
+);
