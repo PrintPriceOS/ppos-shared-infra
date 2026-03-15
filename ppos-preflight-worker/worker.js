@@ -17,7 +17,8 @@ const {
     retryManager,
     resourceLifecycleService,
     metricsService,
-    secretManager
+    secretManager,
+    runtimePolicyResolver
 } = require('../ppos-shared-infra');
 
 const subprocessManager = require('./subprocess_manager');
@@ -44,6 +45,17 @@ class PreflightWorker {
             jobType: operation || (governance && governance.jobType),
             operation: 'execute'
         };
+
+        // 0. Multi-Region Runtime Guard (Phase 24.C)
+        const runtimeDecision = runtimePolicyResolver.isActionAllowed(
+            operation === 'autofix' ? 'local_autofix' : 'local_analyze',
+            governanceContext
+        );
+
+        if (!runtimeDecision.allowed) {
+            console.warn(`[FEDERATION-BLOCK] Job ${job_id} denied: ${runtimeDecision.reason} | Mode: ${runtimeDecision.mode}`);
+            throw new Error(`Federated Runtime Restriction: ${runtimeDecision.reason}`);
+        }
 
         // 1. Policy Gate (Phase 19.C.2)
         const decision = await policyEnforcementService.evaluate(governanceContext);

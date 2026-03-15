@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const GovernanceService = require('../services/governanceService');
 const { requireAuth } = require('../middleware/auth');
+const { requireGovernanceAction } = require('../middleware/governanceAuth');
 
-// Note: requireAuth() already extracts 'operator' from JWT/API-Key
-
-router.post('/tenant/quarantine', requireAuth(['admin', 'super-admin']), async (req, res) => {
+// Protected mutation routes (Authority + Freshness needed for global mutations)
+router.post('/tenant/quarantine', [requireAuth(['admin', 'super-admin']), requireGovernanceAction('global_mutation')], async (req, res) => {
     try {
         const { tenantId, reason } = req.body;
         if (!tenantId || !reason) return res.status(400).json({ error: 'Tenant ID and Reason required' });
@@ -17,7 +17,7 @@ router.post('/tenant/quarantine', requireAuth(['admin', 'super-admin']), async (
     }
 });
 
-router.post('/tenant/pardon', requireAuth(['admin', 'super-admin']), async (req, res) => {
+router.post('/tenant/pardon', [requireAuth(['admin', 'super-admin']), requireGovernanceAction('global_mutation')], async (req, res) => {
     try {
         const { tenantId, reason } = req.body;
         if (!tenantId) return res.status(400).json({ error: 'Tenant ID required' });
@@ -29,7 +29,7 @@ router.post('/tenant/pardon', requireAuth(['admin', 'super-admin']), async (req,
     }
 });
 
-router.post('/queue/state', requireAuth(['operator', 'admin', 'super-admin']), async (req, res) => {
+router.post('/queue/state', [requireAuth(['operator', 'admin', 'super-admin']), requireGovernanceAction('global_mutation')], async (req, res) => {
     try {
         const { queueName, state, reason } = req.body;
         if (!queueName || !state || !reason) return res.status(400).json({ error: 'QueueName, State, and Reason required' });
@@ -111,7 +111,7 @@ router.get('/resources/tenant/:id', requireAuth(['operator', 'admin', 'super-adm
 
 // --- Destructive Endpoints (19.B.2) ---
 
-router.post('/queue/flush', requireAuth(['super-admin']), async (req, res) => {
+router.post('/queue/flush', [requireAuth(['super-admin']), requireGovernanceAction('global_mutation')], async (req, res) => {
     try {
         const { queueType, reason } = req.body;
         if (!queueType || !reason) return res.status(400).json({ error: 'QueueType and Reason required' });
@@ -123,7 +123,7 @@ router.post('/queue/flush', requireAuth(['super-admin']), async (req, res) => {
     }
 });
 
-router.post('/history/purge', requireAuth(['super-admin']), async (req, res) => {
+router.post('/history/purge', [requireAuth(['super-admin']), requireGovernanceAction('global_mutation')], async (req, res) => {
     try {
         const { days, reason } = req.body;
         if (!days || !reason) return res.status(400).json({ error: 'Retention Period (days) and Reason required' });

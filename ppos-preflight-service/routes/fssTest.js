@@ -3,9 +3,22 @@
  * 
  * Internal route to test Multi-Region Awareness and FSS publication.
  */
-const { fssAdapter, regionContext } = require('@ppos/shared-infra');
+const { fssAdapter, regionContext, runtimePolicyResolver } = require('@ppos/shared-infra');
 
 module.exports = async function (fastify, opts) {
+    fastify.addHook('preHandler', async (request, reply) => {
+        // All FSS test actions require fresh cache and non-isolated mode
+        const governance = runtimePolicyResolver.isActionAllowed('cross_region_publish');
+        if (!governance.allowed) {
+            reply.status(governance.mode === 'EMERGENCY_RESTRICTIVE' ? 403 : 503).send({
+                ok: false,
+                error: 'GOVERNANCE_BLOCK',
+                message: governance.reason,
+                details: governance
+            });
+        }
+    });
+
     fastify.post('/publish-printer', async (request, reply) => {
         const printer = request.body || { id: 'test-printer-001', name: 'InkJet Pro 5000' };
         

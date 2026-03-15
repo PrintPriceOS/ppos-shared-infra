@@ -12,6 +12,7 @@ const {
     federationCockpitService
 } = require('@ppos/shared-infra');
 const { requirePrinterAuth } = require('../middleware/printerAuth');
+const { requireGovernanceAction } = require('../middleware/governanceAuth');
 
 /**
  * @route GET /api/federation/printers
@@ -30,7 +31,7 @@ router.get('/printers', async (req, res) => {
  * @route POST /api/federation/printers
  * @desc Register a new printer node
  */
-router.post('/printers', async (req, res) => {
+router.post('/printers', requireGovernanceAction('printer_onboarding'), async (req, res) => {
     try {
         const result = await printerRegistryService.registerPrinter(req.body);
         res.status(201).json(result);
@@ -57,7 +58,7 @@ router.get('/printers/:id', async (req, res) => {
  * @route POST /api/federation/printers/:id/capabilities
  * @desc Add a technical capability to a printer
  */
-router.post('/printers/:id/capabilities', async (req, res) => {
+router.post('/printers/:id/capabilities', requireGovernanceAction('printer_onboarding'), async (req, res) => {
     try {
         const capId = await printerRegistryService.addCapability(req.params.id, req.body);
         res.status(201).json({ id: capId });
@@ -70,7 +71,7 @@ router.post('/printers/:id/capabilities', async (req, res) => {
  * @route POST /api/federation/printers/:id/credentials
  * @desc Generate new HMAC credentials for a printer (Admin only)
  */
-router.post('/printers/:id/credentials', async (req, res) => {
+router.post('/printers/:id/credentials', requireGovernanceAction('printer_onboarding'), async (req, res) => {
     try {
         const creds = await printerCredentialService.createCredentials(req.params.id);
         res.status(201).json(creds);

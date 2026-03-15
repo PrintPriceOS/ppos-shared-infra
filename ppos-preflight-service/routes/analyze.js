@@ -7,10 +7,22 @@ const path = require('path');
 const os = require('os');
 const fs = require('fs-extra');
 const AnalyzeCommand = require('@ppos/preflight-engine/src/runtime/commands/analyzeCommand');
-const { metricsService } = require('@ppos/shared-infra');
+const { metricsService, runtimePolicyResolver } = require('@ppos/shared-infra');
 
 module.exports = async function (fastify, opts) {
     fastify.post('/', async (request, reply) => {
+        // Governance Guard: local_analyze
+        const governance = runtimePolicyResolver.isActionAllowed('local_analyze');
+        if (!governance.allowed) {
+            reply.status(503).send({
+                ok: false,
+                error: 'GOVERNANCE_BLOCK',
+                message: governance.reason,
+                details: governance
+            });
+            return;
+        }
+
         const data = await request.file();
         if (!data) {
             reply.status(400).send({ error: 'INPUT_ERROR', message: 'No file uploaded' });

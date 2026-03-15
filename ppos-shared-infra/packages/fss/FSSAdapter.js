@@ -9,6 +9,7 @@ const path = require('path');
 const RegionContext = require('../region/RegionContext');
 const RegionFilter = require('../region/RegionFilter');
 const FssEventEnvelope = require('./FssEventEnvelope');
+const runtimePolicyResolver = require('../federation/RuntimePolicyResolver');
 
 class FSSAdapter {
     constructor() {
@@ -27,12 +28,33 @@ class FSSAdapter {
     async publishGlobalEvent(eventName, entityType, entityId, payload) {
         try {
             console.log(`[FSS-ADAPTER] Attempting publish: ${eventName} (${entityType}:${entityId})`);
+            
+            // 0. Runtime Governance Gate (Phase 24.H)
+            const actionMap = {
+                'PolicyPublished': 'policy_publish',
+                'PrinterNodeRegistered': 'printer_onboarding',
+                'RegionHealthSummaryPublished': 'health_status_pub'
+            };
+            const actionKey = actionMap[eventName] || 'cross_region_publish';
+            const decision = runtimePolicyResolver.isActionAllowed(actionKey);
+
+            if (!decision.allowed) {
+                throw new Error(`Governance publication block: ${decision.reason} (${decision.mode})`);
+            }
 
             // 1. Compliance Check
             RegionFilter.assertReplicable(entityType, payload);
 
             // 2. Sanitization
             const cleanPayload = RegionFilter.sanitizeForGlobalSync(entityType, payload);
+            
+            // Inject runtime decision metadata for auditability
+            cleanPayload._governance = {
+                mode: decision.mode,
+                authority: decision.authority_status,
+                decision: 'allowed',
+                reason: decision.reason
+            };
 
             // 3. Build Envelope
             const envelope = FssEventEnvelope.build(eventName, entityType, entityId, cleanPayload);
