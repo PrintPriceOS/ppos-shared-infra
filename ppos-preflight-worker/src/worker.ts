@@ -6,7 +6,7 @@ import * as activities from './activities/preflight';
 async function run() {
     const worker = await Worker.create({
         // In a polyrepo, workflows might be in their own bundle or imported
-        workflowsPath: require.resolve('./workflows'), 
+        workflowsPath: require.resolve('./workflows'),
         activities,
         taskQueue: process.env.TEMPORAL_TASK_QUEUE || 'PREFLIGHT_QUEUE',
         connectionOptions: {

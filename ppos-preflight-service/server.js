@@ -28,6 +28,7 @@ fastify.register(require('./routes/health'), { prefix: '/health' });
 fastify.register(require('./routes/ready'), { prefix: '/ready' });
 fastify.register(require('./routes/diagnostics'), { prefix: '/diagnostics' });
 fastify.register(require('./routes/fssTest'), { prefix: '/admin/fss-test' });
+fastify.register(require('./routes/fssReplicate'), { prefix: '/fss' });
 fastify.register(require('./routes/analyze'), { prefix: '/analyze' });
 fastify.register(require('./routes/autofix'), { prefix: '/autofix' });
 fastify.register(require('./routes/metrics'), { prefix: '/metrics' });
