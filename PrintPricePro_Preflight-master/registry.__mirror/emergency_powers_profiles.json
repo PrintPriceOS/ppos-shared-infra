@@ -1,0 +1,24 @@
+{
+    "crisis_response": {
+        "triggers": [
+            "multi_region_capacity_failure",
+            "protocol_integrity_break"
+        ],
+        "allowedActions": [
+            "routing_restriction",
+            "gate_tightening"
+        ],
+        "maxDurationHours": 72,
+        "requiresRollbackPlan": true
+    },
+    "trust_stabilization": {
+        "triggers": [
+            "systemic_trust_collapse_risk"
+        ],
+        "allowedActions": [
+            "partner_suspension_with_evidence"
+        ],
+        "maxDurationHours": 48,
+        "requiresInstitutionalReview": true
+    }
+}

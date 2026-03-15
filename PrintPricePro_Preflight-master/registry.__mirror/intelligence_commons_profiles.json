@@ -1,0 +1,12 @@
+{
+    "commons_standard_balanced": {
+        "promotionPosture": "controlled",
+        "aggregationDepth": "generalized",
+        "boundaryStrictness": "high"
+    },
+    "commons_open_learning": {
+        "promotionPosture": "active",
+        "aggregationDepth": "network_wide",
+        "boundaryStrictness": "moderate"
+    }
+}

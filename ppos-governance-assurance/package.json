@@ -1,0 +1,19 @@
+{
+  "name": "@ppos/governance-assurance",
+  "version": "1.0.0",
+  "description": "PrintPrice OS Governance and Assurance Logic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ppos",
+    "governance",
+    "assurance"
+  ],
+  "author": "PrintPrice OS Team",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20"
+  }
+}

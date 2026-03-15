@@ -1,0 +1,193 @@
+{
+    "programId": "v33-ppos-build-orchestrator",
+    "chunks": [
+        {
+            "chunkId": "chunk-01-root",
+            "title": "Root repository scaffold",
+            "target": "root",
+            "priority": "P0",
+            "dependsOn": [],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-02-build-program-core",
+            "title": "Core runtime contracts",
+            "target": "packages/build-program-core",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-01-root"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-03-workspace-bootstrapper",
+            "title": "Workspace bootstrap runtime",
+            "target": "packages/workspace-bootstrapper",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-02-build-program-core"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-04-repo-provisioner",
+            "title": "Repository provisioning runtime",
+            "target": "packages/repo-provisioner",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-03-workspace-bootstrapper"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-05-starter-slice-hydrator",
+            "title": "Starter slice hydration runtime",
+            "target": "packages/starter-slice-hydrator",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-04-repo-provisioner"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-06-ci-activation",
+            "title": "CI activation runtime",
+            "target": "packages/ci-activation",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-05-starter-slice-hydrator"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-07-build-cli",
+            "title": "Build CLI runtime",
+            "target": "packages/build-cli",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-06-ci-activation"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-08-issue-publisher",
+            "title": "Issue publication runtime",
+            "target": "packages/issue-publisher",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-07-build-cli"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-09-story-execution-controller",
+            "title": "Story execution controller",
+            "target": "packages/story-execution-controller",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-08-issue-publisher"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-10-gate-evaluator",
+            "title": "Gate evaluation runtime",
+            "target": "packages/gate-evaluator",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-09-story-execution-controller"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-11-evidence-bundles",
+            "title": "Evidence bundle runtime",
+            "target": "packages/evidence-bundles",
+            "priority": "P0",
+            "dependsOn": [
+                "chunk-10-gate-evaluator"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-12-build-observability",
+            "title": "Build observability runtime",
+            "target": "packages/build-observability",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-11-evidence-bundles"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-13-operator-views",
+            "title": "Operator views runtime",
+            "target": "packages/operator-views",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-12-build-observability"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-14-managed-operations",
+            "title": "Managed operations runtime",
+            "target": "packages/managed-operations",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-13-operator-views"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-15-run-reporting",
+            "title": "Run reporting runtime",
+            "target": "packages/run-reporting",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-14-managed-operations"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-16-operator-dashboard-ui",
+            "title": "Operator dashboard UI",
+            "target": "packages/operator-dashboard-ui",
+            "priority": "P2",
+            "dependsOn": [
+                "chunk-15-run-reporting"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-17-registry-seeds",
+            "title": "Registry seeds",
+            "target": "registry",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-16-operator-dashboard-ui"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-18-scripts",
+            "title": "Repository scripts",
+            "target": "scripts",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-17-registry-seeds"
+            ],
+            "status": "DONE"
+        },
+        {
+            "chunkId": "chunk-19-tests",
+            "title": "Tests",
+            "target": "tests",
+            "priority": "P1",
+            "dependsOn": [
+                "chunk-18-scripts"
+            ],
+            "status": "DONE"
+        }
+    ]
+}

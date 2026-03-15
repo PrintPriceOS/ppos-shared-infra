@@ -1,0 +1,60 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "strict": true,
+        "declaration": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "composite": true
+    },
+    "files": [],
+    "references": [
+        {
+            "path": "packages/build-program-core"
+        },
+        {
+            "path": "packages/workspace-bootstrapper"
+        },
+        {
+            "path": "packages/repo-provisioner"
+        },
+        {
+            "path": "packages/starter-slice-hydrator"
+        },
+        {
+            "path": "packages/ci-activation"
+        },
+        {
+            "path": "packages/build-cli"
+        },
+        {
+            "path": "packages/issue-publisher"
+        },
+        {
+            "path": "packages/story-execution-controller"
+        },
+        {
+            "path": "packages/gate-evaluator"
+        },
+        {
+            "path": "packages/evidence-bundles"
+        },
+        {
+            "path": "packages/build-observability"
+        },
+        {
+            "path": "packages/operator-views"
+        },
+        {
+            "path": "packages/managed-operations"
+        },
+        {
+            "path": "packages/run-reporting"
+        },
+        {
+            "path": "packages/operator-dashboard-ui"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "shared_registry": {
+        "root": {
+            "package.json": {
+                "name": "ppos-shared-registry",
+                "private": true,
+                "version": "0.1.0"
+            },
+            "README.md": "# ppos-shared-registry\nCentralized registries for PrintPrice OS."
+        },
+        "packages": {
+            "policy-profiles": {
+                "src/policy_profiles.json": "[]"
+            }
+        }
+    },
+    "docs_architecture": {
+        "root": {
+            "README.md": "# ppos-docs-architecture\nCanonical architecture documentation for PrintPrice OS."
+        },
+        "docs": {
+            "specs/SYSTEM_OVERVIEW.md": "# System Overview\nPrintPrice OS Architecture summary."
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "package_boundaries": {
+        "contract_first": {
+            "allDependenciesMustBeInSharedContracts": true,
+            "forbidCrossDomainCoupling": true
+        }
+    }
+}

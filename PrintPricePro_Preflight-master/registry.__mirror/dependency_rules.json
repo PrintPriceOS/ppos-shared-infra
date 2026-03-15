@@ -1,0 +1,19 @@
+{
+    "dependencyRules": {
+        "logic": [
+            {
+                "requires": "V25",
+                "for": "V26"
+            },
+            {
+                "requires": "V22",
+                "for": "V23"
+            },
+            {
+                "requires": "V26",
+                "for": "V30"
+            }
+        ],
+        "strictMode": true
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "bounded_authority": {
+        "title": "Bounded Authority",
+        "description": "No governance body has absolute or arbitrary power; all actions must be within defined scope.",
+        "weight": 0.25
+    },
+    "governed_interoperability": {
+        "title": "Governed Interoperability",
+        "description": "Interoperability is maintained through versioned, governed protocols (FEP).",
+        "weight": 0.20
+    },
+    "tenant_and_actor_due_process": {
+        "title": "Tenant & Actor Due Process",
+        "description": "Every restriction or intervention requires evidence-backed explanation and a review path.",
+        "weight": 0.20
+    },
+    "evidence_based_decisionability": {
+        "title": "Evidence-Based Decisionability",
+        "description": "All governance decisions must be backed by verifiable operational or protocol evidence.",
+        "weight": 0.15
+    },
+    "auditability_of_power": {
+        "title": "Auditability of Power",
+        "description": "Governance actions are themselves deterministic and subject to meta-audit.",
+        "weight": 0.20
+    }
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "playbookId": "pb_regional_capacity_stress",
+        "title": "Regional Capacity Stress Response",
+        "trigger": "high_regional_bottleneck",
+        "steps": [
+            "validate trusted alternatives",
+            "recompute assignment preferences",
+            "protect enterprise_plus commitments"
+        ]
+    },
+    {
+        "playbookId": "pb_partner_trust_degradation",
+        "title": "Partner Trust Protection",
+        "trigger": "partner_trust_decline",
+        "steps": [
+            "review trust assertions",
+            "restrict new assignments to node",
+            "trigger strategic rebalancing"
+        ]
+    }
+]

@@ -1,0 +1,13 @@
+{
+    "name": "@ppos/shared-contracts",
+    "version": "1.0.0",
+    "description": "Canonical types and contracts for PrintPrice OS",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.0"
+    }
+}

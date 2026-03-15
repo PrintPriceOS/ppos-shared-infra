@@ -1,0 +1,10 @@
+{
+    "resourceModels": {
+        "complexityMultipliers": {
+            "core_infrastructure": 1.0,
+            "institutional_governance": 1.2,
+            "intelligence_commons": 1.1,
+            "continuity_foresight": 1.3
+        }
+    }
+}

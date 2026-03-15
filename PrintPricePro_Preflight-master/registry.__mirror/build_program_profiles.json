@@ -1,0 +1,24 @@
+{
+    "build_programs": {
+        "P1": {
+            "title": "Platform Kernel & Governance Foundation",
+            "priority": "critical_foundation"
+        },
+        "P2": {
+            "title": "Federated Exchange & Protocol",
+            "priority": "strategic_core"
+        },
+        "P3": {
+            "title": "Economic Intelligence & Network Optimization",
+            "priority": "expansion_core"
+        },
+        "P4": {
+            "title": "Strategic Command & Institutional Layers",
+            "priority": "institutional_advanced"
+        },
+        "P5": {
+            "title": "Knowledge, Commons, Foresight & Continuity",
+            "priority": "advanced_intelligence"
+        }
+    }
+}

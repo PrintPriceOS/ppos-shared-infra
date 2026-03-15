@@ -1,0 +1,12 @@
+{
+    "foresight_policy": {
+        "evolutionRules": {
+            "requireInstitutionalReviewForHighImpactPaths": true,
+            "requireLegitimacyCheckForConstitutionalAdjacentChanges": true
+        },
+        "blockedModes": {
+            "allowOpaquePredictions": false,
+            "allowAutoConstitutionalRecommendation": false
+        }
+    }
+}

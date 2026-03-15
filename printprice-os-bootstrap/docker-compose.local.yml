@@ -1,0 +1,182 @@
+version: "3.8"
+
+services:
+  # MySQL Canonical Database
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=printprice_os
+      - MYSQL_USER=ppos_user
+      - MYSQL_PASSWORD=ppos_pass
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - printprice-network
+
+  # Message Broker & State
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - printprice-network
+
+  redis:
+    image: redis:7.0-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - printprice-network
+
+  # Observability
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    command: [ "--config=/etc/otel-collector.yaml" ]
+    volumes:
+      - ./observability/otel-collector.yaml:/etc/otel-collector.yaml
+    ports:
+      - "4317:4317" # OTLP gRPC
+      - "4318:4318" # OTLP HTTP
+    networks:
+      - printprice-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./observability/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - printprice-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - printprice-network
+
+  # Application Services
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=ppos_user
+      - MYSQL_PASSWORD=ppos_pass
+      - MYSQL_DATABASE=printprice_os
+      - REDIS_HOST=redis
+      - RABBITMQ_URL=amqp://rabbitmq
+      - TEMPORAL_ADDRESS=temporal:7233
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+    depends_on:
+      - mysql
+      - redis
+      - rabbitmq
+      - otel-collector
+    networks:
+      - printprice-network
+
+  # POOL B: Transactional Orchestrator (Temporal)
+  worker-orchestrator:
+    build:
+      context: ./workers
+    environment:
+      - WORKER_POOL=POOL_B
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=ppos_user
+      - MYSQL_PASSWORD=ppos_pass
+      - MYSQL_DATABASE=printprice_os
+      - TEMPORAL_ADDRESS=temporal:7233
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4318
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    depends_on:
+      - mysql
+    networks:
+      - printprice-network
+
+  # POOL A: Heavy Compute (BullMQ)
+  worker-compute:
+    build:
+      context: ../ppos-preflight-worker
+    environment:
+      - WORKER_POOL=POOL_A
+      - REDIS_HOST=redis
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=ppos_user
+      - MYSQL_PASSWORD=ppos_pass
+      - MYSQL_DATABASE=printprice_os
+      - POOL_A_CONCURRENCY=2
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 2G
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - printprice-network
+
+  # POOL C: External I/O (BullMQ)
+  worker-comms:
+    build:
+      context: ../ppos-preflight-worker
+    environment:
+      - WORKER_POOL=POOL_C
+      - REDIS_HOST=redis
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=ppos_user
+      - MYSQL_PASSWORD=ppos_pass
+      - MYSQL_DATABASE=printprice_os
+      - POOL_C_CONCURRENCY=20
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - printprice-network
+
+  # POOL D: Platform Control (Governance Manager)
+  governance-manager:
+    build:
+      context: ../ppos-shared-infra
+      dockerfile: packages/governance/Dockerfile
+    environment:
+      - WORKER_POOL=POOL_D
+      - REDIS_HOST=redis
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=ppos_user
+      - MYSQL_PASSWORD=ppos_pass
+      - MYSQL_DATABASE=printprice_os
+    deploy:
+      resources:
+        limits:
+          cpus: '0.10'
+          memory: 256M
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - printprice-network
+
+networks:
+  printprice-network:
+    external: true

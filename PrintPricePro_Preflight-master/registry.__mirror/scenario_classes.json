@@ -1,0 +1,14 @@
+{
+    "baseline_continuation": {
+        "label": "Baseline Continuity",
+        "volatilityExpectation": "low"
+    },
+    "stress_escalation": {
+        "label": "Stress & Constraint Escalation",
+        "volatilityExpectation": "high"
+    },
+    "protocol_evolution_pressure": {
+        "label": "Protocol Evolution Demand",
+        "volatilityExpectation": "moderate"
+    }
+}

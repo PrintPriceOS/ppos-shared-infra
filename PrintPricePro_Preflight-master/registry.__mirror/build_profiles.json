@@ -1,0 +1,14 @@
+{
+    "execution_standard_balanced": {
+        "posture": "balanced",
+        "resourceCap": "standard",
+        "riskTolerance": "moderate",
+        "priorityFocus": "foundational_first"
+    },
+    "execution_aggressive_growth": {
+        "posture": "aggressive",
+        "resourceCap": "high",
+        "riskTolerance": "high",
+        "priorityFocus": "parallel_capability_build"
+    }
+}

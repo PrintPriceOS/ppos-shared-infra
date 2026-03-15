@@ -1,0 +1,22 @@
+{
+    "profileId": "foundation_bootstrap",
+    "name": "Foundation Bootstrap Profile",
+    "governance": {
+        "enforceDependencyGates": true,
+        "requireEvidence": [
+            "workspace_structure"
+        ]
+    },
+    "repositories": [
+        {
+            "repoId": "@ppos/core",
+            "class": "core-library",
+            "priority": "P0"
+        },
+        {
+            "repoId": "@ppos/contracts",
+            "class": "contract-bundle",
+            "priority": "P0"
+        }
+    ]
+}

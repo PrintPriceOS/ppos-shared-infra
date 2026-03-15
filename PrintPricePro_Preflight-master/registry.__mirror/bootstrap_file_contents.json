@@ -1,0 +1,16 @@
+{
+    "bootstrap_contents": {
+        "root": {
+            "pnpm-workspace": "packages:\n  - \"packages/*\"\n",
+            "tsconfig_base": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",\n    \"module\": \"ESNext\",\n    \"strict\": true,\n    \"declaration\": true\n  }\n}"
+        },
+        "packages": {
+            "federation_contracts": {
+                "exchange_node": "export interface ExchangeNode {\n  nodeId: string;\n  organizationId: string;\n  status: \"active\" | \"degraded\";\n}\n"
+            },
+            "fep_protocol": {
+                "validator": "export function validateFepMessage(input: any) {\n  return { status: \"undetermined\", findings: [] };\n}\n"
+            }
+        }
+    }
+}

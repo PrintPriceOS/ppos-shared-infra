@@ -1,0 +1,12 @@
+{
+  "id": "ppos-governance-assurance",
+  "title": "Governance Assurance",
+  "provisionedAt": "2026-03-11T04:05:35.535Z",
+  "blueprint": "V32",
+  "labels": [
+    "foundation",
+    "governance",
+    "assurance",
+    "wave:1"
+  ]
+}

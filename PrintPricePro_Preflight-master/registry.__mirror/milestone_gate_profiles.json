@@ -1,0 +1,16 @@
+{
+    "milestone_gates": {
+        "ms_foundation_stable": [
+            "V11_release_active",
+            "V13_trust_validated"
+        ],
+        "ms_exchange_federated": [
+            "V22.5_fep_stabilized",
+            "interop_tests_pass"
+        ],
+        "ms_institutional_governed": [
+            "V26_constitution_active",
+            "legitimacy_audit_passed"
+        ]
+    }
+}

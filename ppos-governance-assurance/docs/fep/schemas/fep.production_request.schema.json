@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Production Request",
+    "type": "object",
+    "required": [
+        "requestId",
+        "requestingNodeId",
+        "requestType",
+        "status"
+    ],
+    "properties": {
+        "requestId": {
+            "type": "string"
+        },
+        "requestingNodeId": {
+            "type": "string"
+        },
+        "requestType": {
+            "type": "string"
+        },
+        "bookSpec": {
+            "type": "object",
+            "properties": {
+                "format": {
+                    "type": "string"
+                },
+                "binding": {
+                    "type": "string"
+                },
+                "copies": {
+                    "type": "integer",
+                    "minimum": 1
+                }
+            }
+        },
+        "constraints": {
+            "type": "object",
+            "properties": {
+                "regionPreference": {
+                    "type": "string"
+                },
+                "deadline": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "qualityProfile": {
+                    "type": "string"
+                }
+            }
+        },
+        "status": {
+            "enum": [
+                "draft",
+                "published",
+                "matched",
+                "assigned",
+                "in_production",
+                "completed",
+                "expired",
+                "cancelled"
+            ]
+        }
+    }
+}

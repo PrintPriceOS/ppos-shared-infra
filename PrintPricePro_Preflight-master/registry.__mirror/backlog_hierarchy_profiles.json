@@ -1,0 +1,9 @@
+{
+    "backlog_hierarchy": {
+        "mode": "program_phase_epic_capability_story_task",
+        "linking": {
+            "epicToProgram": true,
+            "capabilityToEpic": true
+        }
+    }
+}

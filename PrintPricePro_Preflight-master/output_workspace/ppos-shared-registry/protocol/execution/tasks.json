@@ -1,0 +1,287 @@
+[
+  {
+    "wave": "wave_1",
+    "epicId": "SR-01",
+    "title": "Policy Profiles",
+    "repo": "ppos-shared-registry",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SR-01.1",
+        "title": "Governance and federation policies",
+        "stories": [
+          {
+            "storyId": "SR-01.1.1",
+            "title": "Add governance default policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          },
+          {
+            "storyId": "SR-01.1.2",
+            "title": "Add governance policy schema",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SR-01.1.3",
+            "title": "Add federation default policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          },
+          {
+            "storyId": "SR-01.1.4",
+            "title": "Add federation policy schema",
+            "tasks": [
+              "add schema"
+            ]
+          }
+        ]
+      },
+      {
+        "capabilityId": "SR-01.2",
+        "title": "Advanced domain policies",
+        "acceptance": [
+          "todos los perfiles versionables",
+          "cargables por servicios"
+        ],
+        "stories": [
+          {
+            "storyId": "SR-01.2.1",
+            "title": "Add economy policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          },
+          {
+            "storyId": "SR-01.2.2",
+            "title": "Add strategic-command policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          },
+          {
+            "storyId": "SR-01.2.3",
+            "title": "Add foresight policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          },
+          {
+            "storyId": "SR-01.2.4",
+            "title": "Add continuity policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          },
+          {
+            "storyId": "SR-01.2.5",
+            "title": "Add execution policy JSON",
+            "tasks": [
+              "add json"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SR-02",
+    "title": "Profiles",
+    "repo": "ppos-shared-registry",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SR-02.1",
+        "title": "Deployment and protocol",
+        "stories": [
+          {
+            "storyId": "SR-02.1.1",
+            "title": "Add deployment profiles",
+            "tasks": [
+              "add profiles"
+            ]
+          },
+          {
+            "storyId": "SR-02.1.2",
+            "title": "Add deployment schema",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SR-02.1.3",
+            "title": "Add protocol profiles",
+            "tasks": [
+              "add profiles"
+            ]
+          },
+          {
+            "storyId": "SR-02.1.4",
+            "title": "Add benchmark profiles",
+            "tasks": [
+              "add profiles"
+            ]
+          },
+          {
+            "storyId": "SR-02.1.5",
+            "title": "Add service tier profiles",
+            "tasks": [
+              "add profiles"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SR-03",
+    "title": "Thresholds and Catalogs",
+    "repo": "ppos-shared-registry",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SR-03.1",
+        "title": "Threshold sets",
+        "stories": [
+          {
+            "storyId": "SR-03.1.1",
+            "title": "Add trust thresholds",
+            "tasks": [
+              "add thresholds"
+            ]
+          },
+          {
+            "storyId": "SR-03.1.2",
+            "title": "Add readiness thresholds",
+            "tasks": [
+              "add thresholds"
+            ]
+          },
+          {
+            "storyId": "SR-03.1.3",
+            "title": "Add continuity entropy thresholds",
+            "tasks": [
+              "add thresholds"
+            ]
+          },
+          {
+            "storyId": "SR-03.1.4",
+            "title": "Add foresight signal thresholds",
+            "tasks": [
+              "add thresholds"
+            ]
+          }
+        ]
+      },
+      {
+        "capabilityId": "SR-03.2",
+        "title": "Shared catalogs",
+        "stories": [
+          {
+            "storyId": "SR-03.2.1",
+            "title": "Add finding codes catalog",
+            "tasks": [
+              "add catalog"
+            ]
+          },
+          {
+            "storyId": "SR-03.2.2",
+            "title": "Add telemetry metrics catalog",
+            "tasks": [
+              "add catalog"
+            ]
+          },
+          {
+            "storyId": "SR-03.2.3",
+            "title": "Add runbook catalog",
+            "tasks": [
+              "add catalog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SR-04",
+    "title": "Maps",
+    "repo": "ppos-shared-registry",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SR-04.1",
+        "title": "Shared maps",
+        "stories": [
+          {
+            "storyId": "SR-04.1.1",
+            "title": "Add dependency map",
+            "tasks": [
+              "add map"
+            ]
+          },
+          {
+            "storyId": "SR-04.1.2",
+            "title": "Add execution wave map",
+            "tasks": [
+              "add map"
+            ]
+          },
+          {
+            "storyId": "SR-04.1.3",
+            "title": "Add package ownership map",
+            "tasks": [
+              "add map"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SR-05",
+    "title": "Registry Validation",
+    "repo": "ppos-shared-registry",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SR-05.1",
+        "title": "Validation scripts",
+        "acceptance": [
+          "JSON válido",
+          "policies localizadas correctamente",
+          "índice generable"
+        ],
+        "stories": [
+          {
+            "storyId": "SR-05.1.1",
+            "title": "Implement validate-registry-json.mjs",
+            "tasks": [
+              "implement script"
+            ]
+          },
+          {
+            "storyId": "SR-05.1.2",
+            "title": "Implement check-policy-locality.mjs",
+            "tasks": [
+              "implement script"
+            ]
+          },
+          {
+            "storyId": "SR-05.1.3",
+            "title": "Implement generate-registry-index.mjs",
+            "tasks": [
+              "implement script"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

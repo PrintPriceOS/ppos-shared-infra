@@ -1,0 +1,12 @@
+{
+  "id": "ppos-federation-protocol",
+  "title": "Federation Protocol",
+  "provisionedAt": "2026-03-11T04:05:35.566Z",
+  "blueprint": "V32",
+  "labels": [
+    "foundation",
+    "protocol",
+    "federation",
+    "wave:1"
+  ]
+}

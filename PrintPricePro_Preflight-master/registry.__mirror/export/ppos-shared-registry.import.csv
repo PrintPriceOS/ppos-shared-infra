@@ -1,0 +1,17 @@
+Issue ID,Type,Title,Status,Priority,Epic,Capability,Labels,Dependencies,Acceptance Criteria
+SR-01.1.1,story,"Add governance default policy JSON",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- governance policy file exists
+- policyProfile field set
+- file validates against schema"
+SR-01.1.2,story,"Add governance policy schema",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- governance schema exists
+- schema validates default governance policy"
+SR-01.1.3,story,"Add federation default policy JSON",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- federation policy file exists
+- minimumTrustTier field present
+- file validates against schema"
+SR-01.1.4,story,"Add federation policy schema",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- federation schema exists
+- schema validates federation default policy"
+SR-01.2.1,story,"Add economy policy JSON",todo,P1,"SR-01 Policy Profiles","SR-01.2 Advanced domain policies","foundation, registry, policies, wave:1","","- economy policy file exists
+- pricing fields present"
+SR-01.2.2,story,"Add strategic-command policy JSON",todo,P1,"SR-01 Policy Profiles","SR-01.2 Advanced domain policies","foundation, registry, policies, wave:1","","- strategic-command policy file exists
+- approvalRequiredFor array present"
+SR-01.2.3,story,"Add foresight policy JSON",todo,P1,"SR-01 Policy Profiles","SR-01.2 Advanced domain policies","foundation, registry, policies, wave:1","","- foresight policy file exists
+- weakSignalPromotion field present"

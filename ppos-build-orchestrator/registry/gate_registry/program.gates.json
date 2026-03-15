@@ -1,0 +1,12 @@
+{
+    "gates": [
+        {
+            "gateId": "program.assurance.v1",
+            "severity": "hard",
+            "checks": [
+                "readiness_audit_passed",
+                "promotion_approved"
+            ]
+        }
+    ]
+}

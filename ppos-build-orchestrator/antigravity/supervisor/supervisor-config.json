@@ -1,0 +1,19 @@
+{
+    "supervisorId": "antigravity-v9-supervisor",
+    "programId": "v33-ppos-build-orchestrator",
+    "repository": "ppos-build-orchestrator",
+    "mode": "chunked_supervision",
+    "strictOrdering": true,
+    "blockOnChunkFailure": true,
+    "blockOnP0Failure": true,
+    "requireEvidenceForVerification": true,
+    "requireAllP0ForPromotion": true,
+    "allowManualOverride": false,
+    "logFormat": "jsonl",
+    "defaultProgramState": "IN_PROGRESS",
+    "priorityRules": {
+        "P0BlocksPromotion": true,
+        "P1CanProceedIfP0Healthy": true,
+        "P2NeverOverridesP0OrP1": true
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "programId": "prog.v33.sample",
+    "name": "V33 Sample Build",
+    "repositories": [
+        {
+            "repoId": "@ppos/core",
+            "priority": "P0"
+        }
+    ],
+    "stories": [
+        {
+            "storyId": "S-001",
+            "repoId": "@ppos/core"
+        }
+    ]
+}

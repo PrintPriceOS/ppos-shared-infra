@@ -1,0 +1,7 @@
+{
+    "governed_contributive_access": {
+        "contributionReward": "enhanced_benchmark_visibility",
+        "minimumParticipationPeriod": "30_days",
+        "reciprocityCheck": "quarterly"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "profileId": "mvb_bootstrap",
+    "name": "Minimum Viable Build Profile",
+    "governance": {
+        "enforceDependencyGates": true,
+        "requireEvidence": [
+            "unit_tests",
+            "lint_clean"
+        ]
+    },
+    "repositories": [
+        {
+            "repoId": "@ppos/api-gateway",
+            "class": "service-node",
+            "priority": "P1"
+        },
+        {
+            "repoId": "@ppos/auth-service",
+            "class": "service-node",
+            "priority": "P0"
+        }
+    ]
+}

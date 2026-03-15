@@ -1,0 +1,12 @@
+{
+    "gates": [
+        {
+            "gateId": "story.readiness.v1",
+            "severity": "hard",
+            "checks": [
+                "acceptance_criteria_met",
+                "evidence_attached"
+            ]
+        }
+    ]
+}

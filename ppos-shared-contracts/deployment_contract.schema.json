@@ -1,0 +1,66 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "PrintPrice OS Deployment Contract",
+    "type": "object",
+    "required": [
+        "deploymentId",
+        "profile",
+        "serviceTier",
+        "region"
+    ],
+    "properties": {
+        "deploymentId": {
+            "type": "string"
+        },
+        "profile": {
+            "enum": [
+                "single_tenant_enterprise",
+                "multi_tenant_managed_cloud",
+                "private_managed_instance",
+                "partner_network_deployment"
+            ]
+        },
+        "serviceTier": {
+            "enum": [
+                "standard",
+                "enterprise",
+                "enterprise_plus",
+                "strategic_managed"
+            ]
+        },
+        "region": {
+            "type": "string"
+        },
+        "environmentTopology": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "tenantIsolation": {
+            "enum": [
+                "logical",
+                "dedicated",
+                "cluster"
+            ]
+        },
+        "upgradeMode": {
+            "enum": [
+                "canary_first",
+                "staged_rollout",
+                "manual_approval_only"
+            ]
+        },
+        "supportModel": {
+            "enum": [
+                "provider_managed",
+                "customer_managed",
+                "partner_managed",
+                "shared_responsibility"
+            ]
+        },
+        "runbookProfile": {
+            "type": "string"
+        }
+    }
+}

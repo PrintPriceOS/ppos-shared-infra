@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+.tmp
+.DS_Store
+registry/execution_runs/*.tmp
+registry/reports/*.tmp
+registry/evidence/*.tmp

@@ -1,0 +1,36 @@
+{
+    "programId": "v33-ppos-build-orchestrator",
+    "gates": [
+        {
+            "gateId": "contract_integrity_gate",
+            "status": "PASSED",
+            "severity": "hard"
+        },
+        {
+            "gateId": "starter_integrity_gate",
+            "status": "PASSED",
+            "severity": "hard"
+        },
+        {
+            "gateId": "ci_baseline_gate",
+            "status": "PASSED",
+            "severity": "hard"
+        },
+        {
+            "gateId": "issue_publication_gate",
+            "status": "PASSED",
+            "severity": "hard"
+        },
+        {
+            "gateId": "evidence_completeness_gate",
+            "status": "PASSED",
+            "severity": "hard"
+        },
+        {
+            "gateId": "program_promotion_gate",
+            "status": "PENDING",
+            "severity": "hard",
+            "reason": "Awaiting final verification tests"
+        }
+    ]
+}

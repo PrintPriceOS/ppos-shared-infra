@@ -1,0 +1,238 @@
+[
+  {
+    "wave": "wave_1",
+    "epicId": "FP-01",
+    "title": "FEP Protocol",
+    "repo": "ppos-federation-protocol",
+    "priority": "strategic_core",
+    "capabilities": [
+      {
+        "capabilityId": "FP-01.1",
+        "title": "Envelope resolution",
+        "stories": [
+          {
+            "storyId": "FP-01.1.1",
+            "title": "Implement resolveProtocolEnvelope",
+            "tasks": [
+              "implement resolveProtocolEnvelope"
+            ]
+          },
+          {
+            "storyId": "FP-01.1.2",
+            "title": "Implement resolveMessageType",
+            "tasks": [
+              "implement resolveMessageType"
+            ]
+          },
+          {
+            "storyId": "FP-01.1.3",
+            "title": "Implement resolveProtocolVersion",
+            "tasks": [
+              "implement resolveProtocolVersion"
+            ]
+          }
+        ]
+      },
+      {
+        "capabilityId": "FP-01.2",
+        "title": "FEP message validation",
+        "acceptance": [
+          "envelopes inválidos rechazados",
+          "mensajes scaffold-valid devuelven estado controlado",
+          "sin null crashes"
+        ],
+        "stories": [
+          {
+            "storyId": "FP-01.2.1",
+            "title": "Implement validateFepMessage",
+            "tasks": [
+              "implement validateFepMessage"
+            ]
+          },
+          {
+            "storyId": "FP-01.2.2",
+            "title": "Add findings emission",
+            "tasks": [
+              "add findings emission"
+            ]
+          },
+          {
+            "storyId": "FP-01.2.3",
+            "title": "Add telemetry emission",
+            "tasks": [
+              "add telemetry emission"
+            ]
+          },
+          {
+            "storyId": "FP-01.2.4",
+            "title": "Add schema tests",
+            "tasks": [
+              "add schema tests"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "FP-02",
+    "title": "FEP Validation",
+    "repo": "ppos-federation-protocol",
+    "priority": "strategic_core",
+    "capabilities": [
+      {
+        "capabilityId": "FP-02.1",
+        "title": "State transitions",
+        "stories": [
+          {
+            "storyId": "FP-02.1.1",
+            "title": "Implement validateStateTransition",
+            "tasks": [
+              "implement validateStateTransition"
+            ]
+          },
+          {
+            "storyId": "FP-02.1.2",
+            "title": "Implement buildFepValidationState",
+            "tasks": [
+              "implement buildFepValidationState"
+            ]
+          },
+          {
+            "storyId": "FP-02.1.3",
+            "title": "Add state transition tests",
+            "tasks": [
+              "add tests"
+            ]
+          }
+        ]
+      },
+      {
+        "capabilityId": "FP-02.2",
+        "title": "Governance/trust/evidence checks",
+        "acceptance": [
+          "transitions inválidas bloqueadas",
+          "bloques mínimos requeridos verificados"
+        ],
+        "stories": [
+          {
+            "storyId": "FP-02.2.1",
+            "title": "Implement validateGovernanceBlock",
+            "tasks": [
+              "implement validateGovernanceBlock"
+            ]
+          },
+          {
+            "storyId": "FP-02.2.2",
+            "title": "Implement validateTrustBlock",
+            "tasks": [
+              "implement validateTrustBlock"
+            ]
+          },
+          {
+            "storyId": "FP-02.2.3",
+            "title": "Implement validateEvidenceEnvelope",
+            "tasks": [
+              "implement validateEvidenceEnvelope"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "FP-03",
+    "title": "Assignment Contracts",
+    "repo": "ppos-federation-protocol",
+    "priority": "strategic_core",
+    "capabilities": [
+      {
+        "capabilityId": "FP-03.1",
+        "title": "Assignment lifecycle",
+        "acceptance": [
+          "siguientes estados permitidos correctos",
+          "lifecycle deterministic"
+        ],
+        "stories": [
+          {
+            "storyId": "FP-03.1.1",
+            "title": "Implement resolveAssignmentLifecycle",
+            "tasks": [
+              "implement resolveAssignmentLifecycle"
+            ]
+          },
+          {
+            "storyId": "FP-03.1.2",
+            "title": "Implement buildAssignmentContractState",
+            "tasks": [
+              "implement buildAssignmentContractState"
+            ]
+          },
+          {
+            "storyId": "FP-03.1.3",
+            "title": "Add lifecycle tests",
+            "tasks": [
+              "add tests"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "FP-04",
+    "title": "Exchange Core",
+    "repo": "ppos-federation-protocol",
+    "priority": "strategic_core",
+    "capabilities": [
+      {
+        "capabilityId": "FP-04.1",
+        "title": "Exchange state",
+        "acceptance": [
+          "estado del exchange componible",
+          "nodos/capacidades/responses visibles"
+        ],
+        "stories": [
+          {
+            "storyId": "FP-04.1.1",
+            "title": "Implement buildFederatedExchangeState",
+            "tasks": [
+              "implement buildFederatedExchangeState"
+            ]
+          },
+          {
+            "storyId": "FP-04.1.2",
+            "title": "Implement resolveExchangeNodes",
+            "tasks": [
+              "implement resolveExchangeNodes"
+            ]
+          },
+          {
+            "storyId": "FP-04.1.3",
+            "title": "Implement resolveCapabilityNetwork",
+            "tasks": [
+              "implement resolveCapabilityNetwork"
+            ]
+          },
+          {
+            "storyId": "FP-04.1.4",
+            "title": "Implement resolveActiveRequests",
+            "tasks": [
+              "implement resolveActiveRequests"
+            ]
+          },
+          {
+            "storyId": "FP-04.1.5",
+            "title": "Implement resolveActiveOffers",
+            "tasks": [
+              "implement resolveActiveOffers"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

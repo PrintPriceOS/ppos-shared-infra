@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Policy Engine Bridge",
+    "path": "services/policyEngine.js",
+    "canonical": "ppos-governance-assurance/src/policyEngine.js",
+    "type": "delegation",
+    "risk": "medium",
+    "readiness": "REMOVE_AFTER_IMPORT_UPDATE",
+    "consumers": ["routes/preflightV2.js", "services/internal/reportCore.js"]
+  },
+  {
+    "name": "Platform Kernel Bridge",
+    "path": "kernel/index.js",
+    "canonical": "ppos-core-platform/src/kernel/index.js",
+    "type": "reexport",
+    "risk": "low",
+    "readiness": "REMOVE_NOW"
+  },
+  {
+    "name": "Job Manager Bridge",
+    "path": "services/jobManager.js",
+    "canonical": "ppos-core-platform/src/registry/jobManager.js",
+    "type": "delegation",
+    "risk": "low",
+    "readiness": "REMOVE_NOW"
+  },
+  {
+    "name": "Printer Auth Bridge",
+    "path": "middleware/printerAuth.js",
+    "canonical": "ppos-core-platform/src/middleware/printerAuth.js",
+    "type": "middleware_shim",
+    "risk": "medium",
+    "readiness": "REMOVE_AFTER_IMPORT_UPDATE",
+    "consumers": ["server.js"]
+  },
+  {
+    "name": "Connect Route Bridge",
+    "path": "routes/connect.js",
+    "canonical": "ppos-control-plane/src/routes/connect.js",
+    "type": "route_delegation",
+    "risk": "medium",
+    "readiness": "REMOVE_AFTER_IMPORT_UPDATE",
+    "consumers": ["server.js"]
+  },
+  {
+    "name": "Reservations Route Bridge",
+    "path": "routes/reservations.js",
+    "canonical": "ppos-core-platform/src/routes/reservations.js",
+    "type": "route_delegation",
+    "risk": "low",
+    "readiness": "REMOVE_NOW"
+  }
+]

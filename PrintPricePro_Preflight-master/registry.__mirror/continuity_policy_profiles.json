@@ -1,0 +1,7 @@
+{
+    "continuity_policy": {
+        "governanceMode": "constitutionally_guarded_self_renewal",
+        "requireLegitimacyAudit": true,
+        "blockUngovernedOverrides": true
+    }
+}

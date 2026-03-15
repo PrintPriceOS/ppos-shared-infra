@@ -1,0 +1,63 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Production Offer",
+    "type": "object",
+    "required": [
+        "offerId",
+        "requestId",
+        "respondingNodeId",
+        "status"
+    ],
+    "properties": {
+        "offerId": {
+            "type": "string"
+        },
+        "requestId": {
+            "type": "string"
+        },
+        "respondingNodeId": {
+            "type": "string"
+        },
+        "pricing": {
+            "type": "object",
+            "properties": {
+                "estimatedCost": {
+                    "type": "number"
+                },
+                "currency": {
+                    "type": "string",
+                    "pattern": "^[A-Z]{3}$"
+                }
+            }
+        },
+        "delivery": {
+            "type": "object",
+            "properties": {
+                "estimatedDeliveryDays": {
+                    "type": "integer"
+                }
+            }
+        },
+        "confidence": {
+            "type": "object",
+            "properties": {
+                "overallConfidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                }
+            }
+        },
+        "status": {
+            "enum": [
+                "draft",
+                "submitted",
+                "shortlisted",
+                "accepted",
+                "rejected",
+                "withdrawn",
+                "void"
+            ]
+        }
+    }
+}

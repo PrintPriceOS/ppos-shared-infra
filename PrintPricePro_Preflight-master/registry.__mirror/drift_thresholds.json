@@ -1,0 +1,8 @@
+{
+    "drift_thresholds": {
+        "constitutional_coherence_warn": 0.85,
+        "constitutional_coherence_critical": 0.70,
+        "standard_adherence_warn": 0.80,
+        "protocol_consistency_warn": 0.85
+    }
+}

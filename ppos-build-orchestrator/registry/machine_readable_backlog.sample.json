@@ -1,0 +1,9 @@
+{
+    "stories": [
+        {
+            "storyId": "STORY-001",
+            "repoId": "@ppos/core",
+            "priority": "P0"
+        }
+    ]
+}

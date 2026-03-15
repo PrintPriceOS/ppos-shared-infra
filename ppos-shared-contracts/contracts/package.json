@@ -1,0 +1,11 @@
+{
+    "name": "@ppos/contracts",
+    "version": "1.0.0",
+    "description": "Shared contracts mirror for PrintPrice OS",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "PrintPrice OS",
+    "license": "ISC"
+}

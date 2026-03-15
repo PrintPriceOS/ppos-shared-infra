@@ -1,0 +1,30 @@
+{
+  "phase": "R4",
+  "audit_date": "2026-03-14",
+  "components": [
+    {
+      "name": "printerAuth.js",
+      "current_path": "middleware/printerAuth.js",
+      "canonical_owner": "ppos-core-platform",
+      "classification": "MOVE_TO_PPOS_CORE_PLATFORM",
+      "risk": "MEDIUM",
+      "dependencies": ["services/db"]
+    },
+    {
+      "name": "connect.js",
+      "current_path": "routes/connect.js",
+      "canonical_owner": "ppos-control-plane",
+      "classification": "MOVE_TO_PPOS_CONTROL_PLANE",
+      "risk": "MEDIUM",
+      "dependencies": ["services/connectService", "services/printerRegistry"]
+    },
+    {
+      "name": "reservations.js",
+      "current_path": "routes/reservations.js",
+      "canonical_owner": "ppos-core-platform",
+      "classification": "MOVE_TO_PPOS_CORE_PLATFORM",
+      "risk": "LOW",
+      "dependencies": ["services/reservationService"]
+    }
+  ]
+}

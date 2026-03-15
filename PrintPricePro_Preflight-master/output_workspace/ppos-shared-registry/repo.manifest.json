@@ -1,0 +1,12 @@
+{
+  "id": "ppos-shared-registry",
+  "title": "Shared Registry",
+  "provisionedAt": "2026-03-11T04:05:35.508Z",
+  "blueprint": "V32",
+  "labels": [
+    "foundation",
+    "registry",
+    "policies",
+    "wave:1"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "enterprise_operational_assured": {
+        "title": "Enterprise Operational Assurance",
+        "tier": "credible",
+        "requiredControls": 6
+    },
+    "institutional_assured_enterprise": {
+        "title": "Institutional Assured Enterprise",
+        "tier": "institutional_ready",
+        "requiredControls": 10
+    }
+}

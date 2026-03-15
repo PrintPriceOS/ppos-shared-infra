@@ -1,0 +1,12 @@
+{
+  "id": "ppos-core-platform",
+  "title": "Core Platform",
+  "provisionedAt": "2026-03-11T04:05:35.523Z",
+  "blueprint": "V32",
+  "labels": [
+    "foundation",
+    "platform",
+    "runtime",
+    "wave:1"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Node Identity",
+    "type": "object",
+    "required": [
+        "nodeId",
+        "organizationId",
+        "organizationType",
+        "status"
+    ],
+    "properties": {
+        "nodeId": {
+            "type": "string"
+        },
+        "organizationId": {
+            "type": "string"
+        },
+        "organizationType": {
+            "enum": [
+                "printer",
+                "publisher",
+                "broker",
+                "exchange_hub"
+            ]
+        },
+        "deploymentProfile": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "status": {
+            "enum": [
+                "active",
+                "restricted",
+                "suspended",
+                "retired"
+            ]
+        },
+        "capabilitiesVersion": {
+            "type": "string"
+        }
+    }
+}

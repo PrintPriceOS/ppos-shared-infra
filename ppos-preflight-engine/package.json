@@ -1,0 +1,40 @@
+{
+    "name": "@ppos/preflight-engine",
+    "version": "1.0.0",
+    "description": "Standalone Product Kernel for PrintPrice Preflight Engine",
+    "main": "index.js",
+    "bin": {
+        "ppos-preflight": "bin/ppos-preflight.js"
+    },
+    "author": "drleuman",
+    "license": "ISC",
+    "exports": {
+        ".": {
+            "require": "./index.js",
+            "default": "./index.js"
+        },
+        "./engine": "./engine/index.js",
+        "./execution": "./execution/index.js",
+        "./math": "./math/index.js",
+        "./interpretation": "./interpretation/index.js",
+        "./detection": "./detection/index.js",
+        "./src/runtime/commands/*": "./src/runtime/commands/*.js",
+        "./src/cli/commands": "./src/cli/commands.js"
+    },
+    "engines": {
+        "node": ">=20 <21 || >=22"
+    },
+    "scripts": {
+        "preinstall": "node -e \"const v=process.versions.node.split('.')[0]; if(v<20) {console.error('ERROR: Node.js 20 or 22+ required'); process.exit(1)}\"",
+        "test": "node ./tests/run-tests.js",
+        "validate": "node -e \"require('./index.js')\""
+    },
+    "dependencies": {
+        "@fastify/multipart": "^9.4.0",
+        "chalk": "^4.1.2",
+        "commander": "^9.5.0",
+        "fastify": "^5.8.2",
+        "fs-extra": "^10.0.0",
+        "pdf-lib": "^1.17.1"
+    }
+}

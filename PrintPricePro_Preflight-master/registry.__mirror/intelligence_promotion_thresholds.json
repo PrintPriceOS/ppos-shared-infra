@@ -1,0 +1,8 @@
+{
+    "promotion_thresholds": {
+        "generalized_candidate": 0.72,
+        "commons_candidate": 0.82,
+        "doctrine_feedback_candidate": 0.88,
+        "institutional_reference_candidate": 0.93
+    }
+}

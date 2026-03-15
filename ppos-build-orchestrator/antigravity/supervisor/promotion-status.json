@@ -1,0 +1,10 @@
+{
+    "programId": "v33-ppos-build-orchestrator",
+    "promotionId": "prom.v33.final",
+    "status": "ready",
+    "promotion": {
+        "ready": true,
+        "current_stage": "verified",
+        "ready_for_verification": true
+    }
+}

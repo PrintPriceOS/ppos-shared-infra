@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Capability Publication",
+    "type": "object",
+    "required": [
+        "capabilityId",
+        "nodeId",
+        "exposureLevel",
+        "status"
+    ],
+    "properties": {
+        "capabilityId": {
+            "type": "string"
+        },
+        "nodeId": {
+            "type": "string"
+        },
+        "exposureLevel": {
+            "enum": [
+                "public",
+                "partner_only",
+                "private"
+            ]
+        },
+        "capabilities": {
+            "type": "object",
+            "properties": {
+                "printingMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bindingTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "status": {
+            "enum": [
+                "published",
+                "updated",
+                "withdrawn"
+            ]
+        }
+    }
+}

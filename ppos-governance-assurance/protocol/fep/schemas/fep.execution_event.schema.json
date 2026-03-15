@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Execution Event",
+    "type": "object",
+    "required": [
+        "eventId",
+        "assignmentId",
+        "eventType",
+        "timestamp"
+    ],
+    "properties": {
+        "eventId": {
+            "type": "string"
+        },
+        "assignmentId": {
+            "type": "string"
+        },
+        "eventType": {
+            "enum": [
+                "execution_status_event",
+                "execution_delay_event",
+                "execution_completed_event",
+                "execution_exception_event"
+            ]
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "details": {
+            "type": "string"
+        },
+        "completionPercentage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+        }
+    }
+}

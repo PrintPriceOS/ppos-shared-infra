@@ -1,0 +1,25 @@
+{
+    "institutionally_bounded": {
+        "stewards": [
+            "institutional_assurance_board"
+        ],
+        "editors": [
+            "knowledge_steward"
+        ],
+        "safeguards": [
+            "doctrine_change_review",
+            "precedent_lock"
+        ]
+    },
+    "constitutional_protected": {
+        "stewards": [
+            "constitutional_review_group"
+        ],
+        "editors": [
+            "ecosystem_historian"
+        ],
+        "safeguards": [
+            "immutable_historical_audit"
+        ]
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "operational_to_strategic": {
+        "rule": "escalation_required",
+        "safe_boundaries": [
+            "matchmaking_failure_mitigation"
+        ]
+    },
+    "strategic_to_institutional": {
+        "rule": "review_and_attest",
+        "safe_boundaries": [
+            "governed_routing_adjustment"
+        ]
+    },
+    "institutional_to_meta": {
+        "rule": "constitutional_review_path",
+        "safe_boundaries": [
+            "standard_evolution_review"
+        ]
+    }
+}

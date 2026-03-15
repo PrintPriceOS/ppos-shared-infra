@@ -1,0 +1,80 @@
+{
+    "programId": "v33-ppos-build-orchestrator",
+    "packages": [
+        {
+            "packageId": "build-program-core",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "workspace-bootstrapper",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "repo-provisioner",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "starter-slice-hydrator",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "ci-activation",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "build-cli",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "issue-publisher",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "story-execution-controller",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "gate-evaluator",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "evidence-bundles",
+            "state": "SCAFFOLDED",
+            "priority": "P0"
+        },
+        {
+            "packageId": "build-observability",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "operator-views",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "managed-operations",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "run-reporting",
+            "state": "SCAFFOLDED",
+            "priority": "P1"
+        },
+        {
+            "packageId": "operator-dashboard-ui",
+            "state": "SCAFFOLDED",
+            "priority": "P2"
+        }
+    ]
+}

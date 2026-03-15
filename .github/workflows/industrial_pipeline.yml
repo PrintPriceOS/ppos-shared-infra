@@ -1,0 +1,146 @@
+name: PrintPrice OS — Industrial Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security_audit:
+    name: Industrial Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Secret & Credential Purge Check
+        run: |
+          # Búsqueda de patrones prohibidos (API Keys, Secrets, etc)
+          # Retorna error (1) si encuentra algo sospechoso que no sea .env.example
+          grep -rEi "API_KEY|SECRET|PASSWORD|TOKEN|PRIVATE_KEY" . \
+            --exclude-dir=node_modules \
+            --exclude=*.example \
+            --exclude=*.md \
+            --exclude=LICENSE \
+            | grep -v "process.env" | grep -v "secretManager" > findings.log || true
+          
+          if [ -s findings.log ]; then
+            echo "⚠️ [SECURITY WARNING] Possible hardcoded secrets detected:"
+            cat findings.log
+            # En un entorno estricto, aquí haríamos exit 1
+          else
+            echo "✅ No hardcoded secrets found in source."
+          fi
+
+  reproducibility_validation:
+    name: Build Determinism & Isolation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Validate Lockfile Integrity
+        run: |
+          find . -name "package-lock.json" -not -path "*/node_modules/*" | while read lockfile; do
+            echo "Checking $lockfile..."
+            dir=$(dirname $lockfile)
+            cd $dir
+            npm ci --dry-run
+            cd - > /dev/null
+          done
+
+      - name: Path Isolation Check
+        run: |
+          # Asegura que no hay referencias a carpetas locales de usuario
+          if grep -r "C:\\Users" . --exclude-dir=node_modules; then
+            echo "❌ [ERROR] Absolute developer paths detected!"
+            exit 1
+          fi
+
+  service_builds:
+    name: Modular Service Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [
+          'ppos-shared-infra',
+          'ppos-preflight-engine',
+          'ppos-preflight-service',
+          'ppos-preflight-worker'
+        ]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build ${{ matrix.service }}
+        run: |
+          cd ${{ matrix.service }}
+          npm ci
+          if npm run | grep -q "build"; then
+            npm run build
+          fi
+
+  infrastructure_smoke_test:
+    name: Bootstrap & Readiness Validation
+    runs-on: ubuntu-latest
+    needs: [service_builds]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Industrial Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ghostscript curl jq
+
+      - name: Create Environment Baseline
+        run: |
+          cp .env.example .env
+          cp ppos-preflight-service/.env.example ppos-preflight-service/.env
+          cp ppos-preflight-worker/.env.example ppos-preflight-worker/.env
+          # Set safe dev key for diagnostics check
+          echo "ADMIN_API_KEY=ci-test-key" >> ppos-preflight-service/.env
+
+      - name: Start PrintPrice OS Stack
+        run: |
+          docker-compose up -d --build
+          echo "Waiting for stack to stabilize..."
+          sleep 30
+
+      - name: Liveness Validation (/health)
+        run: |
+          curl -fsS http://localhost:3000/health | jq .
+          curl -fsS http://localhost:3000/health | grep -q '"status":"UP"'
+
+      - name: Readiness Validation (/ready)
+        run: |
+          # The service might take a few seconds to connect to DB/Redis inside Docker
+          MAX_RETRIES=10
+          COUNT=0
+          until curl -fsS http://localhost:3000/ready | jq .status | grep -q "READY" || [ $COUNT -eq $MAX_RETRIES ]; do
+            echo "Waiting for dependencies (DB/Redis/GS)... Attempt $((COUNT++))"
+            curl -s http://localhost:3000/ready | jq . || true
+            sleep 5
+          done
+          
+          # Final hard assertion
+          RESPONSE=$(curl -fsS http://localhost:3000/ready)
+          echo "$RESPONSE" | jq .
+          echo "$RESPONSE" | jq .status | grep -q "READY"
+          echo "$RESPONSE" | jq .checks.db | grep -q "true"
+          echo "$RESPONSE" | jq .checks.redis | grep -q "true"
+
+      - name: Diagnostics Integrity Check
+        run: |
+          # Failure check (Unauthorized)
+          curl -s http://localhost:3000/diagnostics | grep -q "UNAUTHORIZED"
+          
+          # Success check (Authorized)
+          curl -fsS -H "x-api-key: ci-test-key" http://localhost:3000/diagnostics | jq .system.platform | grep -q "linux"
+
+      - name: Stack Cleanup
+        if: always()
+        run: docker-compose down

@@ -1,0 +1,12 @@
+{
+    "gates": [
+        {
+            "gateId": "repo.integrity.v1",
+            "severity": "hard",
+            "checks": [
+                "pkg_json_valid",
+                "tsconfig_valid"
+            ]
+        }
+    ]
+}

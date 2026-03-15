@@ -1,0 +1,24 @@
+{
+    "printer_berlin_01": {
+        "organizationId": "printer_berlin_01",
+        "capabilities": {
+            "printingMethods": [
+                "offset",
+                "digital"
+            ],
+            "binding": [
+                "perfect",
+                "hardcover"
+            ],
+            "formats": [
+                "A5",
+                "A4"
+            ],
+            "maxRunLength": 20000,
+            "supportedPaperProfiles": [
+                "Fogra51",
+                "Fogra52"
+            ]
+        }
+    }
+}

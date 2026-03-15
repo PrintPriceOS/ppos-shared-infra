@@ -1,0 +1,225 @@
+[
+  {
+    "wave": "wave_1",
+    "epicId": "SC-01",
+    "title": "Federation Contracts",
+    "repo": "ppos-shared-contracts",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SC-01.1",
+        "title": "Core federation schemas",
+        "stories": [
+          {
+            "storyId": "SC-01.1.1",
+            "title": "Add exchange-node.schema.json",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SC-01.1.2",
+            "title": "Add capability-publication.schema.json",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SC-01.1.3",
+            "title": "Add assignment-contract.schema.json",
+            "tasks": [
+              "add schema"
+            ]
+          }
+        ]
+      },
+      {
+        "capabilityId": "SC-01.2",
+        "title": "Core federation types",
+        "stories": [
+          {
+            "storyId": "SC-01.2.1",
+            "title": "Add ExchangeNode type",
+            "tasks": [
+              "add type"
+            ]
+          },
+          {
+            "storyId": "SC-01.2.2",
+            "title": "Add CapabilityPublication type",
+            "tasks": [
+              "add type"
+            ]
+          },
+          {
+            "storyId": "SC-01.2.3",
+            "title": "Add AssignmentContract type",
+            "tasks": [
+              "add type"
+            ]
+          }
+        ]
+      },
+      {
+        "capabilityId": "SC-01.3",
+        "title": "Federation validators",
+        "acceptance": [
+          "schemas compilan",
+          "tipos exportados",
+          "validación mínima funcional"
+        ],
+        "stories": [
+          {
+            "storyId": "SC-01.3.1",
+            "title": "Implement validateFederationContractSet",
+            "tasks": [
+              "implement validator"
+            ]
+          },
+          {
+            "storyId": "SC-01.3.2",
+            "title": "Add schema load tests",
+            "tasks": [
+              "add tests"
+            ]
+          },
+          {
+            "storyId": "SC-01.3.3",
+            "title": "Add contract validation tests",
+            "tasks": [
+              "add tests"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SC-02",
+    "title": "Governance Contracts",
+    "repo": "ppos-shared-contracts",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SC-02.1",
+        "title": "Governance assertion",
+        "stories": [
+          {
+            "storyId": "SC-02.1.1",
+            "title": "Add governance-assertion.schema.json",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SC-02.1.2",
+            "title": "Add GovernanceAssertion type",
+            "tasks": [
+              "add type"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SC-03",
+    "title": "Evidence Contracts",
+    "repo": "ppos-shared-contracts",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SC-03.1",
+        "title": "Evidence envelope",
+        "stories": [
+          {
+            "storyId": "SC-03.1.1",
+            "title": "Add evidence-envelope.schema.json",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SC-03.1.2",
+            "title": "Add EvidenceEnvelope type",
+            "tasks": [
+              "add type"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SC-04",
+    "title": "Trust Contracts",
+    "repo": "ppos-shared-contracts",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SC-04.1",
+        "title": "Trust record",
+        "stories": [
+          {
+            "storyId": "SC-04.1.1",
+            "title": "Add trust-record.schema.json",
+            "tasks": [
+              "add schema"
+            ]
+          },
+          {
+            "storyId": "SC-04.1.2",
+            "title": "Add TrustRecord type",
+            "tasks": [
+              "add type"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "wave": "wave_1",
+    "epicId": "SC-05",
+    "title": "Contract Governance",
+    "repo": "ppos-shared-contracts",
+    "priority": "critical_foundation",
+    "capabilities": [
+      {
+        "capabilityId": "SC-05.1",
+        "title": "Versioning",
+        "acceptance": [
+          "no duplicación autoritativa",
+          "familias versionadas",
+          "compatibilidad validable"
+        ],
+        "stories": [
+          {
+            "storyId": "SC-05.1.1",
+            "title": "Add contract family version markers",
+            "tasks": [
+              "add version markers"
+            ]
+          },
+          {
+            "storyId": "SC-05.1.2",
+            "title": "Add duplication checks",
+            "tasks": [
+              "add checks"
+            ]
+          },
+          {
+            "storyId": "SC-05.1.3",
+            "title": "Add cross-family compatibility tests",
+            "tasks": [
+              "add tests"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

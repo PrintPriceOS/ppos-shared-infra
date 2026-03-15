@@ -1,0 +1,24 @@
+{
+    "workstreams": {
+        "WS1": {
+            "label": "Core Platform",
+            "focus": "infrastructure"
+        },
+        "WS2": {
+            "label": "Protocol Contracts",
+            "focus": "standards"
+        },
+        "WS3": {
+            "label": "Network Intelligence",
+            "focus": "optimization"
+        },
+        "WS4": {
+            "label": "Institutional Systems",
+            "focus": "governance"
+        },
+        "WS5": {
+            "label": "Continuity Systems",
+            "focus": "longevity"
+        }
+    }
+}

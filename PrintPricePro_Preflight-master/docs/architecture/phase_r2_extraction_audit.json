@@ -1,0 +1,48 @@
+[
+  {
+    "item": "Platform Kernel",
+    "path": "kernel/",
+    "classification": "MOVE_TO_PPOS_CORE_PLATFORM",
+    "destination": "ppos-core-platform",
+    "risk": "medium",
+    "notes": "Core domain objects and contracts."
+  },
+  {
+    "item": "Policy Definitions",
+    "path": "policies/",
+    "classification": "MOVE_TO_PPOS_GOVERNANCE_ASSURANCE",
+    "destination": "ppos-governance-assurance",
+    "risk": "high",
+    "notes": "JSON rule definitions."
+  },
+  {
+    "item": "Policy Engine",
+    "path": "services/policyEngine.js",
+    "classification": "MOVE_TO_PPOS_GOVERNANCE_ASSURANCE",
+    "destination": "ppos-governance-assurance",
+    "risk": "high",
+    "notes": "Governance decision runtime."
+  },
+  {
+    "item": "Job Management",
+    "path": "services/jobManager.js",
+    "classification": "MOVE_TO_PPOS_CORE_PLATFORM",
+    "destination": "ppos-core-platform",
+    "risk": "medium",
+    "notes": "Shared job registry/registry adapter."
+  },
+  {
+    "item": "Governance Check script",
+    "path": "scripts/governance-check.js",
+    "classification": "MOVE_TO_PPOS_GOVERNANCE_ASSURANCE",
+    "destination": "ppos-governance-assurance",
+    "risk": "low"
+  },
+  {
+    "item": "Autonomous Jobs simulator",
+    "path": "scripts/simulate-autonomous-jobs.js",
+    "classification": "MOVE_TO_PPOS_CORE_PLATFORM",
+    "destination": "ppos-core-platform",
+    "risk": "low"
+  }
+]

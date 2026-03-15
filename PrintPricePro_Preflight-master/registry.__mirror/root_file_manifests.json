@@ -1,0 +1,22 @@
+{
+    "root_manifests": {
+        "standard_foundation": {
+            "files": [
+                "README.md",
+                "LICENSE",
+                "package.json",
+                "ARCHITECTURE.md",
+                "OWNERSHIP.md",
+                "CONTRIBUTING.md",
+                "CHANGELOG.md"
+            ],
+            "configs": [
+                ".gitignore",
+                ".eslintrc.cjs",
+                ".prettierrc",
+                ".editorconfig",
+                "tsconfig.base.json"
+            ]
+        }
+    }
+}

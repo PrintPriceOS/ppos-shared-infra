@@ -1,0 +1,7 @@
+{
+    "signalThresholds": {
+        "weakSignalPromotion": 0.65,
+        "trendPromotion": 0.78,
+        "scenarioActivation": 0.72
+    }
+}

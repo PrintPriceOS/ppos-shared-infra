@@ -1,0 +1,17 @@
+{
+    "routing_doctrine": {
+        "title": "Standard Matchmaking Continuity Doctrine",
+        "confidenceThreshold": "moderate",
+        "reviewBody": "strategic_command_authority"
+    },
+    "trust_doctrine": {
+        "title": "Ecosystem Trust Preservation Doctrine",
+        "confidenceThreshold": "high",
+        "reviewBody": "institutional_assurance_board"
+    },
+    "constitutional_safeguard_doctrine": {
+        "title": "Meta-Governance Continuity Doctrine",
+        "confidenceThreshold": "critical",
+        "reviewBody": "constitutional_review_group"
+    }
+}

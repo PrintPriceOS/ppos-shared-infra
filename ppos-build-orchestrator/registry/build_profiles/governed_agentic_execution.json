@@ -1,0 +1,15 @@
+{
+    "profileId": "governed_agentic_execution",
+    "name": "Governed Agentic Execution Profile",
+    "governance": {
+        "enforceHardGates": true,
+        "requireAgentAudit": true
+    },
+    "repositories": [
+        {
+            "repoId": "@ppos/agent-kernel",
+            "class": "agent-orchestrator",
+            "priority": "P0"
+        }
+    ]
+}

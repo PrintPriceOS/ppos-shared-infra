@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Trust Record",
+    "type": "object",
+    "required": [
+        "trustRecordId",
+        "targetNodeId",
+        "issuerNodeId",
+        "trustTier"
+    ],
+    "properties": {
+        "trustRecordId": {
+            "type": "string"
+        },
+        "targetNodeId": {
+            "type": "string"
+        },
+        "issuerNodeId": {
+            "type": "string"
+        },
+        "trustTier": {
+            "enum": [
+                "verified_partner",
+                "standard_node",
+                "restricted",
+                "suspended"
+            ]
+        },
+        "trustScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "reasoning": {
+            "type": "string"
+        }
+    }
+}

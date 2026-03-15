@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Assignment Contract",
+    "type": "object",
+    "required": [
+        "assignmentId",
+        "requestId",
+        "offerId",
+        "publisherNodeId",
+        "printerNodeId",
+        "status"
+    ],
+    "properties": {
+        "assignmentId": {
+            "type": "string"
+        },
+        "requestId": {
+            "type": "string"
+        },
+        "offerId": {
+            "type": "string"
+        },
+        "publisherNodeId": {
+            "type": "string"
+        },
+        "printerNodeId": {
+            "type": "string"
+        },
+        "executionTerms": {
+            "type": "object",
+            "properties": {
+                "deliveryDeadline": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "qualityProfile": {
+                    "type": "string"
+                }
+            }
+        },
+        "status": {
+            "enum": [
+                "pending",
+                "proposed",
+                "active",
+                "executing",
+                "completed",
+                "disputed",
+                "terminated"
+            ]
+        }
+    }
+}

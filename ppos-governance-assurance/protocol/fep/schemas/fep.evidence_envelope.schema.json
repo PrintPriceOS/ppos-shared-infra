@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FEP Evidence Envelope",
+  "type": "object",
+  "required": [
+    "evidenceId",
+    "evidenceType",
+    "generatedAt",
+    "actorId",
+    "checksum"
+  ],
+  "properties": {
+    "evidenceId": {
+      "type": "string"
+    },
+    "evidenceType": {
+      "enum": [
+        "capability_attestation",
+        "request_publication_record",
+        "offer_submission_record",
+        "assignment_acceptance_record",
+        "governance_approval_record"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actorId": {
+      "type": "string"
+    },
+    "assuranceLevel": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "traceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "artifactType": {
+            "type": "string"
+          },
+          "artifactRef": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "checksum": {
+      "type": "string"
+    }
+  }
+}

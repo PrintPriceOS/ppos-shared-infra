@@ -1,0 +1,49 @@
+# PrintPrice OS — Master Ignore File
+
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+.env.*
+!.env.example
+
+# Runtime & Temp
+.runtime/
+.setup-logs/
+tmp/
+temp/
+logs/
+*.log
+backups/
+uploads/
+quarantine/
+
+# Build Artifacts
+dist/
+build/
+.cache/
+.parcel-cache/
+.eslintcache
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project Specific
+PrintPricePro_Preflight-master/dist/
+PrintPricePro_Preflight-master/tmp/
+PrintPricePro_Preflight-master/node_modules/
+PrintPricePro_Preflight-master/uploads-v2-temp/
+PrintPricePro_Preflight-master/uploads-quarantine/

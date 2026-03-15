@@ -1,0 +1,11 @@
+{
+    "team_models": {
+        "pods": {
+            "TEAM_1": "Core Platform Pod",
+            "TEAM_2": "Protocol Contracts Pod",
+            "TEAM_3": "Intelligence Pod",
+            "TEAM_4": "Institutional Pod",
+            "TEAM_5": "Continuity Pod"
+        }
+    }
+}

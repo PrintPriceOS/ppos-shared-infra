@@ -1,0 +1,21 @@
+{
+  "audit_version": "1.0",
+  "project": "PrintPrice OS",
+  "classifications": [
+    { "id": "kernel", "path": "PrintPricePro_Preflight-master/kernel", "classification": "MOVE_TO_PPOS_CORE_PLATFORM", "target": "ppos-core-platform" },
+    { "id": "policies", "path": "PrintPricePro_Preflight-master/policies", "classification": "MOVE_TO_PPOS_GOVERNANCE_ASSURANCE", "target": "ppos-governance-assurance" },
+    { "id": "control_plane", "path": "PrintPricePro_Preflight-master/ppos-control-plane", "classification": "MOVE_TO_PPOS_CONTROL_PLANE", "target": "ppos-control-plane" },
+    { "id": "printer_agent", "path": "PrintPricePro_Preflight-master/ppos-printer-agent", "classification": "MOVE_TO_PPOS_PRINTER_AGENT", "target": "ppos-printer-agent" },
+    { "id": "build_orchestrator", "path": "PrintPricePro_Preflight-master/ppos-build-orchestrator", "classification": "MOVE_TO_PPOS_BUILD_ORCHESTRATOR", "target": "ppos-build-orchestrator" },
+    { "id": "policy_engine", "path": "PrintPricePro_Preflight-master/services/policyEngine.js", "classification": "MOVE_TO_PPOS_GOVERNANCE_ASSURANCE", "target": "ppos-governance-assurance" },
+    { "id": "registry_adapter", "path": "PrintPricePro_Preflight-master/services/registryAdapter.js", "classification": "MOVE_TO_PPOS_CORE_PLATFORM", "target": "ppos-core-platform" },
+    { "id": "tenant_service", "path": "PrintPricePro_Preflight-master/services/tenantService.js", "classification": "MOVE_TO_PPOS_CORE_PLATFORM", "target": "ppos-core-platform" },
+    { "id": "db_service", "path": "PrintPricePro_Preflight-master/services/db.js", "classification": "MOVE_TO_PPOS_SHARED_INFRA", "target": "ppos-shared-infra" },
+    { "id": "connect_route", "path": "PrintPricePro_Preflight-master/routes/connect.js", "classification": "MOVE_TO_PPOS_CONTROL_PLANE", "target": "ppos-control-plane" }
+  ],
+  "risks": {
+    "nesting": "HIGH",
+    "governance_coupling": "HIGH",
+    "db_coupling": "MEDIUM"
+  }
+}

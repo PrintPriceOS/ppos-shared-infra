@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "FEP Error Event",
+    "type": "object",
+    "required": [
+        "errorId",
+        "errorCode",
+        "severity",
+        "message"
+    ],
+    "properties": {
+        "errorId": {
+            "type": "string"
+        },
+        "errorCode": {
+            "type": "string"
+        },
+        "severity": {
+            "enum": [
+                "low",
+                "medium",
+                "high",
+                "critical"
+            ]
+        },
+        "targetEntity": {
+            "type": "string"
+        },
+        "message": {
+            "type": "string"
+        },
+        "context": {
+            "type": "object"
+        }
+    }
+}

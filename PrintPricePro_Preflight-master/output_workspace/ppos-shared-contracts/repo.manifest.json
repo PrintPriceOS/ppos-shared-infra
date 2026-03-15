@@ -1,0 +1,12 @@
+{
+  "id": "ppos-shared-contracts",
+  "title": "Shared Contracts",
+  "provisionedAt": "2026-03-11T04:05:35.500Z",
+  "blueprint": "V32",
+  "labels": [
+    "foundation",
+    "contracts",
+    "shared",
+    "wave:1"
+  ]
+}
