@@ -31,6 +31,13 @@ const federationCockpitService = require('./packages/federation/federationCockpi
 
 const resourceLifecycleService = require('./packages/governance/resourceLifecycleService');
 
+// Multi-Region Awareness Layer (MVP)
+const regionContext = require('./packages/region/RegionContext');
+const regionFilter = require('./packages/region/RegionFilter');
+const stateClassification = require('./packages/region/stateClassification');
+const fssAdapter = require('./packages/fss/FSSAdapter');
+const fssEventEnvelope = require('./packages/fss/FssEventEnvelope');
+
 module.exports = {
     db,
     queue,
@@ -63,5 +70,12 @@ module.exports = {
     RedispatchService,
     FederatedSLAService,
     federationCockpitService,
-    resourceLifecycleService
+    resourceLifecycleService,
+    
+    // Multi-Region Awareness Exports
+    regionContext,
+    regionFilter,
+    ...stateClassification,
+    fssAdapter,
+    fssEventEnvelope
 };
