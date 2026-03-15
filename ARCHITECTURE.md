@@ -31,3 +31,10 @@ The R13 layer introduces:
 3. **Execution**: Engine runs in an isolated subprocess.
 4. **Governance**: Policy Engine validates results against SLA.
 5. **Egress**: Results emitted to Federated Registry.
+
+## 🌐 Federated & Multi-Region Runtime
+As of **v1.4.0**, PrintPrice OS implements a globally distributed runtime:
+- **Regional Authority**: Deterministic designation of authoritative regions for policy and identity.
+- **Staleness Gates**: Automatic degradation of service based on synchronization lag.
+- **Emergency Restrictions**: Instant, regional lockdown capabilities for incident containment.
+- **Federated State Sync (FSS)**: Multi-master eventual consistency for global governance.

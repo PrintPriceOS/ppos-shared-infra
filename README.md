@@ -47,6 +47,10 @@ Security is baked into the R13 hardening layer.
 
 See [SECURITY.md](./SECURITY.md) for vulnerability reporting.
 
+
+## 🏆 Milestones
+- **[v1.4.0] Multi-Region Runtime Activation**: Authority-aware execution gates, staleness-aware federation, and regional failover coordination.
+
 ## 📝 License
 
 Distributed under the PrintPrice Industrial License. See [LICENSE](./LICENSE) for details.

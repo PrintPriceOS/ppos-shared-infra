@@ -3,14 +3,15 @@
  * 
  * High-level coordinator for verifying and storing incoming federated events.
  */
-const EventSigner = require('./EventSigner');
+const signatureVerifier = require('../SignatureVerifier');
+const federatedAuth = require('../FederatedAuthorizationService');
 const InboxStore = require('./InboxStore');
 const path = require('path');
 const fs = require('fs');
+const metricsService = require('../../ops/MetricsService');
 
 class RegionalReplicationReceiver {
-    constructor(config) {
-        this.trustRegistry = config.trustRegistry; // Map of region_id -> public_key
+    constructor(config = {}) {
         this.quarantineDir = path.join(process.cwd(), '.runtime', 'fss-quarantine');
         if (!fs.existsSync(this.quarantineDir)) {
             fs.mkdirSync(this.quarantineDir, { recursive: true });
@@ -18,34 +19,35 @@ class RegionalReplicationReceiver {
     }
 
     async receive(envelope) {
-        const { origin_region, event_id, signature } = envelope;
+        const { origin_region, event_id, event_name } = envelope;
 
         console.log(`[FSS-RECEIVE] Incoming event ${event_id} from ${origin_region}`);
 
-        // 1. Authenticate Origin
-        const publicKey = this.trustRegistry[origin_region];
-        if (!publicKey) {
-            console.warn(`[FSS-SECURITY] Unknown origin region: ${origin_region}`);
-            return { status: 'REJECTED', reason: 'UNKNOWN_ORIGIN' };
+        // 1. Signature Verification (Phase 2)
+        const isSignatureValid = signatureVerifier.verify(envelope);
+        if (!isSignatureValid) {
+            console.error(`[FSS-SECURITY] Signature check FAILED for ${event_id} from ${origin_region}`);
+            this.quarantine(envelope, 'INVALID_SIGNATURE');
+            metricsService.recordRuntimeDecision('fss_receive_invalid_sig', false, 'NORMAL', origin_region);
+            return { status: 'REJECTED_INVALID_SIGNATURE' };
         }
 
-        // 2. Verify Signature
-        try {
-            const isValid = EventSigner.verify(envelope, publicKey);
-            if (!isValid) {
-                console.error(`[FSS-SECURITY] Signature check FAILED for ${event_id}`);
-                this.quarantine(envelope, 'INVALID_SIGNATURE');
-                return { status: 'QUARANTINED', reason: 'INVALID_SIGNATURE' };
-            }
-        } catch (err) {
-            console.error(`[FSS-SECURITY] Verification error: ${err.message}`);
-            this.quarantine(envelope, 'VERIFICATION_ERROR');
-            return { status: 'QUARANTINED', reason: 'VERIFICATION_ERROR' };
+        // 2. Authorization Verification (Phase 6)
+        const isAuthorized = federatedAuth.isAuthorized(origin_region, event_name);
+        if (!isAuthorized) {
+            console.warn(`[FSS-SECURITY] Region ${origin_region} is NOT AUTHORIZED to publish ${event_name}`);
+            this.quarantine(envelope, 'UNAUTHORIZED_SENDER');
+            metricsService.recordRuntimeDecision('fss_receive_unauthorized', false, 'NORMAL', origin_region);
+            return { status: 'REJECTED_UNAUTHORIZED' };
         }
 
-        // 3. Replay Protection (Dedupe)
+        // 3. Persist and Dedupe (Phase 5)
         const storeResult = await InboxStore.store(envelope);
         
+        if (storeResult.status === 'ACCEPTED') {
+            metricsService.recordRuntimeDecision('fss_receive_accepted', true, 'NORMAL', origin_region);
+        }
+
         return { status: storeResult.status };
     }
 

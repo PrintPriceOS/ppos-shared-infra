@@ -36,10 +36,13 @@ const regionContext = require('./packages/region/RegionContext');
 const regionFilter = require('./packages/region/RegionFilter');
 const stateClassification = require('./packages/region/stateClassification');
 const sanitizationUtils = require('./packages/region/sanitizationUtils');
-const fssAdapter = require('./packages/fss/FSSAdapter');
-const fssEventEnvelope = require('./packages/fss/FssEventEnvelope');
-const { fssReceiver, OutboxRelay } = require('./fss_facade');
-const EventSigner = require('./packages/fss/transport/EventSigner');
+const FssEventEnvelope = require('./packages/fss/FssEventEnvelope');
+const EventSigner = require('./packages/fss/EventSigner');
+const SignatureVerifier = require('./packages/fss/SignatureVerifier');
+const FSSAdapter = require('./packages/fss/FSSAdapter');
+const OutboxRelay = require('./packages/fss/OutboxRelay');
+const { fssReceiver } = require('./fss_facade');
+const TransportEventSigner = require('./packages/fss/transport/EventSigner'); // Renamed to avoid conflict
 const InboxStore = require('./packages/fss/transport/InboxStore');
 const PolicyAuthorityResolver = require('./packages/federation/PolicyAuthorityResolver');
 const policyCacheManager = require('./packages/federation/PolicyCacheManager');
@@ -86,11 +89,12 @@ module.exports = {
     regionFilter,
     ...stateClassification,
     ...sanitizationUtils,
-    fssAdapter,
-    fssEventEnvelope,
+    FSSAdapter,
+    FssEventEnvelope,
+    EventSigner,
+    SignatureVerifier,
     fssReceiver,
     OutboxRelay,
-    EventSigner,
     InboxStore,
     PolicyAuthorityResolver,
     policyCacheManager,

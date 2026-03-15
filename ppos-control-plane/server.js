@@ -90,6 +90,7 @@ app.use('/api/metrics', requireAuth(), metricsRouter);
 app.use('/api/governance', requireAuth(), governanceRouter);
 app.use('/api/efficiency', requireAuth(), efficiencyRouter);
 app.use('/api/federation', requireAuth(), federationRouter);
+app.use('/fss', require('./src/api/fssRelay')); // FSS Transport (Phase 4)
 
 app.listen(port, () => {
     console.log(`[CONTROL-PLANE] Running on port ${port}`);
