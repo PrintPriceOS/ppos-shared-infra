@@ -23,7 +23,19 @@ class MetricsService {
             name: 'ppos_job_latency_seconds',
             help: 'Job processing latency in seconds',
             labelNames: ['operation', 'tenant_id'],
-            buckets: [0.1, 1, 5, 15, 30, 60, 120, 300]
+            buckets: [0.1, 0.5, 1, 5, 15, 30, 60, 300, 3600]
+        });
+
+        this.fssRelayEvents = new client.Counter({
+            name: 'ppos_fss_relay_total',
+            help: 'Total FSS relay operations',
+            labelNames: ['direction', 'status', 'origin_region', 'destination_region', 'event_name']
+        });
+
+        this.fssSecurityViolations = new client.Counter({
+            name: 'ppos_fss_security_violations_total',
+            help: 'Total FSS security violations detected',
+            labelNames: ['region_id', 'violation_type']
         });
 
         this.queueDepthGauge = new client.Gauge({
@@ -92,8 +104,16 @@ class MetricsService {
         });
     }
 
-    updateSyncLag(regionId, lagSeconds) {
-        this.stalenessMetrics.set({ region_id: regionId }, lagSeconds);
+    updateSyncLag(regionId, seconds) {
+        this.regionSyncLag.labels(regionId).set(seconds);
+    }
+
+    recordFssRelay(direction, status, origin, destination, eventName) {
+        this.fssRelayEvents.labels(direction, status, origin, destination, eventName).inc();
+    }
+
+    recordFssViolation(regionId, type) {
+        this.fssSecurityViolations.labels(regionId, type).inc();
     }
 
     /**
