@@ -105,7 +105,7 @@ class MetricsService {
     }
 
     updateSyncLag(regionId, seconds) {
-        this.regionSyncLag.labels(regionId).set(seconds);
+        this.stalenessMetrics.labels(regionId).set(seconds);
     }
 
     recordFssRelay(direction, status, origin, destination, eventName) {
