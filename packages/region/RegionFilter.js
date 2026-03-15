@@ -34,25 +34,32 @@ class RegionFilter {
     }
 
     /**
-     * Redacts unsafe fields from a payload.
+     * Redacts unsafe fields from a payload (Recursive).
      */
     sanitizeForGlobalSync(entityType, payload) {
         const classification = classifyEntity(entityType);
         
         if (classification === 'REGIONAL') return null;
 
-        const sanitized = { ...payload };
-
-        // Auto-redact common sensitive patterns
         const sensitiveKeys = ['local_path', 'secret', 'customer_id', 'raw_node_ip'];
-        
-        Object.keys(sanitized).forEach(key => {
-            if (sensitiveKeys.includes(key) || key.endsWith('_local')) {
-                delete sanitized[key];
-            }
-        });
 
-        return sanitized;
+        const sanitize = (obj) => {
+            if (obj === null || typeof obj !== 'object') return obj;
+            
+            if (Array.isArray(obj)) return obj.map(sanitize);
+
+            const result = {};
+            Object.keys(obj).forEach(key => {
+                if (sensitiveKeys.includes(key) || key.endsWith('_local')) {
+                    // Skip sensitive keys
+                    return;
+                }
+                result[key] = sanitize(obj[key]);
+            });
+            return result;
+        };
+
+        return sanitize(payload);
     }
 }
 
