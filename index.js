@@ -45,6 +45,7 @@ const PolicyAuthorityResolver = require('./packages/federation/PolicyAuthorityRe
 const policyCacheManager = require('./packages/federation/PolicyCacheManager');
 const RegionStalenessEvaluator = require('./packages/federation/RegionStalenessEvaluator');
 const emergencyRestrictionManager = require('./packages/federation/EmergencyRestrictionManager');
+const runtimePolicyResolver = require('./packages/federation/RuntimePolicyResolver');
 
 module.exports = {
     db,
@@ -94,5 +95,6 @@ module.exports = {
     PolicyAuthorityResolver,
     policyCacheManager,
     RegionStalenessEvaluator,
-    emergencyRestrictionManager
+    emergencyRestrictionManager,
+    runtimePolicyResolver
 };

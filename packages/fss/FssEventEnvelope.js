@@ -23,7 +23,11 @@ class FssEventEnvelope {
             classification: classifyEntity(entityType),
             payload: payload,
             signature: null, // Placeholder for Ed25519 signing
-            replication_mode: "standard"
+            replication_mode: "standard",
+            runtime_governance: payload._governance || {
+                mode: "UNKNOWN",
+                authority: "unknown"
+            }
         };
     }
 }

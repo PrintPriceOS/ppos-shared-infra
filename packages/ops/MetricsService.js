@@ -43,6 +43,19 @@ class MetricsService {
             help: 'Total governance rejections by reason',
             labelNames: ['reason', 'tenant_id']
         });
+
+        // Federated Runtime Metrics (Phase 24.I)
+        this.runtimePolicyDecisions = new client.Counter({
+            name: 'ppos_runtime_policy_decisions_total',
+            help: 'Total runtime policy decisions by result and mode',
+            labelNames: ['action', 'decision', 'mode', 'region_id']
+        });
+
+        this.stalenessMetrics = new client.Gauge({
+            name: 'ppos_region_sync_lag_seconds',
+            help: 'Current regional synchronization lag in seconds',
+            labelNames: ['region_id']
+        });
     }
 
     /**
@@ -68,6 +81,19 @@ class MetricsService {
 
     recordGovernanceRejection(reason, tenantId) {
         this.governanceRejections.inc({ reason, tenant_id: tenantId });
+    }
+
+    recordRuntimeDecision(action, decision, mode, regionId) {
+        this.runtimePolicyDecisions.inc({ 
+            action, 
+            decision: decision ? 'ALLOWED' : 'DENIED', 
+            mode, 
+            region_id: regionId 
+        });
+    }
+
+    updateSyncLag(regionId, lagSeconds) {
+        this.stalenessMetrics.set({ region_id: regionId }, lagSeconds);
     }
 
     /**
