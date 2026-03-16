@@ -1,0 +1,22 @@
+{
+    "package_skeletons": {
+        "standard_service": {
+            "folders": [
+                "src/services",
+                "src/resolvers",
+                "src/contracts",
+                "src/schemas",
+                "tests/unit",
+                "docs"
+            ]
+        },
+        "contract_authority": {
+            "folders": [
+                "src/schemas",
+                "src/types",
+                "src/validators",
+                "tests/compatibility"
+            ]
+        }
+    }
+}

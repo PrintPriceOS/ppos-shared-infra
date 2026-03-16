@@ -1,0 +1,31 @@
+{
+    "executive": {
+        "surfaceId": "executive_command_view",
+        "capabilities": [
+            "network_health_summary",
+            "strategic_risk_overview",
+            "regional_pressure_map",
+            "scenario_comparison"
+        ],
+        "accessMode": "read_with_approval_actions"
+    },
+    "ops_admin": {
+        "surfaceId": "ops_control_tower",
+        "capabilities": [
+            "intervention_queue",
+            "runbook_activation",
+            "risk_escalation",
+            "assignment_override_request"
+        ],
+        "accessMode": "governed_operational_control"
+    },
+    "tenant_admin": {
+        "surfaceId": "tenant_strategic_view",
+        "capabilities": [
+            "tenant_risk_profile",
+            "quota_utilization",
+            "service_assurance_status"
+        ],
+        "accessMode": "read_only"
+    }
+}

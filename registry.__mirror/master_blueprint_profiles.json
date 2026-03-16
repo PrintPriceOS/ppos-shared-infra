@@ -1,0 +1,11 @@
+{
+    "blueprint_profiles": {
+        "standard_industrial": {
+            "mode": "contract_first",
+            "readinessThresholds": {
+                "repositoryClarity": 85,
+                "contractCentralization": 80
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "refinement_rules": {
+        "confirmed_threshold": 0.85,
+        "revision_candidate_threshold": 0.65,
+        "deprecated_candidate_threshold": 0.3,
+        "review_trigger": "evidence_divergence_detected"
+    }
+}

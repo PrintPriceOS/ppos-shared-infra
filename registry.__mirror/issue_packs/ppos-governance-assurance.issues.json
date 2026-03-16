@@ -1,0 +1,216 @@
+{
+  "repo": "ppos-governance-assurance",
+  "generatedAt": "2026-03-11T03:38:00.807Z",
+  "epics": [
+    {
+      "wave": "wave_1",
+      "epicId": "GA-01",
+      "title": "Release Governance",
+      "repo": "ppos-governance-assurance",
+      "priority": "critical_foundation",
+      "capabilities": [
+        {
+          "capabilityId": "GA-01.1",
+          "title": "Governance state",
+          "acceptance": [
+            "releaseGate resuelto determinísticamente",
+            "rollback requirement explícito",
+            "output schema válido"
+          ],
+          "stories": [
+            {
+              "storyId": "GA-01.1.1",
+              "title": "Implement resolveReleaseGate",
+              "tasks": [
+                "implement resolveReleaseGate"
+              ]
+            },
+            {
+              "storyId": "GA-01.1.2",
+              "title": "Implement resolveRollbackRequirement",
+              "tasks": [
+                "implement resolveRollbackRequirement"
+              ]
+            },
+            {
+              "storyId": "GA-01.1.3",
+              "title": "Implement buildReleaseGovernanceState",
+              "tasks": [
+                "implement buildReleaseGovernanceState"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wave": "wave_1",
+      "epicId": "GA-02",
+      "title": "Trust Assurance",
+      "repo": "ppos-governance-assurance",
+      "priority": "critical_foundation",
+      "capabilities": [
+        {
+          "capabilityId": "GA-02.1",
+          "title": "Trust scoring",
+          "acceptance": [
+            "trust score estable",
+            "assurance level explicable",
+            "compliance posture presente"
+          ],
+          "stories": [
+            {
+              "storyId": "GA-02.1.1",
+              "title": "Implement resolveTrustScore",
+              "tasks": [
+                "implement resolveTrustScore"
+              ]
+            },
+            {
+              "storyId": "GA-02.1.2",
+              "title": "Implement resolveAssuranceLevel",
+              "tasks": [
+                "implement resolveAssuranceLevel"
+              ]
+            },
+            {
+              "storyId": "GA-02.1.3",
+              "title": "Implement resolveCompliancePosture",
+              "tasks": [
+                "implement resolveCompliancePosture"
+              ]
+            },
+            {
+              "storyId": "GA-02.1.4",
+              "title": "Implement buildTrustAssuranceState",
+              "tasks": [
+                "implement buildTrustAssuranceState"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wave": "wave_1",
+      "epicId": "GA-03",
+      "title": "Policy Engine",
+      "repo": "ppos-governance-assurance",
+      "priority": "critical_foundation",
+      "capabilities": [
+        {
+          "capabilityId": "GA-03.1",
+          "title": "Policy loading",
+          "acceptance": [
+            "policy profile cargable desde registry",
+            "fallback seguro"
+          ],
+          "stories": [
+            {
+              "storyId": "GA-03.1.1",
+              "title": "Implement resolvePolicyProfile",
+              "tasks": [
+                "implement resolvePolicyProfile"
+              ]
+            },
+            {
+              "storyId": "GA-03.1.2",
+              "title": "Connect to shared registry profile loading",
+              "tasks": [
+                "connect registry"
+              ]
+            },
+            {
+              "storyId": "GA-03.1.3",
+              "title": "Add default policy fallback",
+              "tasks": [
+                "add fallback"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wave": "wave_1",
+      "epicId": "GA-04",
+      "title": "Evidence Envelope",
+      "repo": "ppos-governance-assurance",
+      "priority": "critical_foundation",
+      "capabilities": [
+        {
+          "capabilityId": "GA-04.1",
+          "title": "Evidence processing",
+          "acceptance": [
+            "envelope coherente",
+            "traces normalizados",
+            "artefactos resolubles"
+          ],
+          "stories": [
+            {
+              "storyId": "GA-04.1.1",
+              "title": "Implement resolveEvidenceTrace",
+              "tasks": [
+                "implement resolveEvidenceTrace"
+              ]
+            },
+            {
+              "storyId": "GA-04.1.2",
+              "title": "Implement resolveAssuranceArtifacts",
+              "tasks": [
+                "implement resolveAssuranceArtifacts"
+              ]
+            },
+            {
+              "storyId": "GA-04.1.3",
+              "title": "Implement buildEvidenceEnvelopeState",
+              "tasks": [
+                "implement buildEvidenceEnvelopeState"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "wave": "wave_1",
+      "epicId": "GA-05",
+      "title": "Governance Findings",
+      "repo": "ppos-governance-assurance",
+      "priority": "critical_foundation",
+      "capabilities": [
+        {
+          "capabilityId": "GA-05.1",
+          "title": "Findings model",
+          "acceptance": [
+            "findings uniformes",
+            "compatibles con shared contracts"
+          ],
+          "stories": [
+            {
+              "storyId": "GA-05.1.1",
+              "title": "Implement buildGovernanceFindingsState",
+              "tasks": [
+                "implement buildGovernanceFindingsState"
+              ]
+            },
+            {
+              "storyId": "GA-05.1.2",
+              "title": "Add standard finding codes integration",
+              "tasks": [
+                "add findings codes"
+              ]
+            },
+            {
+              "storyId": "GA-05.1.3",
+              "title": "Add finding schema compatibility",
+              "tasks": [
+                "add schema compatibility"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

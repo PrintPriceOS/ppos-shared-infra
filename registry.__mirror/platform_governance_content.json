@@ -1,0 +1,32 @@
+{
+    "core_platform": {
+        "root": {
+            "package.json": {
+                "name": "ppos-core-platform",
+                "private": true,
+                "version": "0.1.0"
+            },
+            "README.md": "# ppos-core-platform\nKernel and runtime foundation for PrintPrice OS."
+        },
+        "packages": {
+            "kernel-state": {
+                "src/index.ts": "export interface KernelState { status: 'initializing' | 'ready'; }"
+            }
+        }
+    },
+    "governance_assurance": {
+        "root": {
+            "package.json": {
+                "name": "ppos-governance-assurance",
+                "private": true,
+                "version": "0.1.0"
+            },
+            "README.md": "# ppos-governance-assurance\nGovernance and audit layer for PrintPrice OS."
+        },
+        "packages": {
+            "release-governance": {
+                "src/services/validateReleaseGate.ts": "export function validateReleaseGate() { return true; }"
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "execution_waves": {
+        "wave_1": {
+            "label": "Core Foundation",
+            "focus": "backbone"
+        },
+        "wave_2": {
+            "label": "Federation & Protocol",
+            "focus": "interoperability"
+        },
+        "wave_3": {
+            "label": "Intelligence Core",
+            "focus": "optimization"
+        },
+        "wave_4": {
+            "label": "Institutional Deepening",
+            "focus": "legitimacy"
+        },
+        "wave_5": {
+            "label": "Durability & Foresight",
+            "focus": "longevity"
+        }
+    }
+}

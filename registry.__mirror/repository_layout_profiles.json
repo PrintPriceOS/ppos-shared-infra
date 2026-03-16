@@ -1,0 +1,20 @@
+{
+    "repository_layouts": {
+        "canonical_service": {
+            "folders": [
+                "src/services",
+                "src/resolvers",
+                "src/contracts",
+                "tests",
+                "docs"
+            ]
+        },
+        "monorepo_workspace": {
+            "folders": [
+                "packages/",
+                "shared/",
+                "scripts/"
+            ]
+        }
+    }
+}

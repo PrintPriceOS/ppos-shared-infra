@@ -1,0 +1,21 @@
+{
+    "verified_participant": {
+        "rights": [
+            "consume_generalized_benchmarks"
+        ]
+    },
+    "assured_participant": {
+        "rights": [
+            "consume_generalized_benchmarks",
+            "consume_doctrine_updates",
+            "contribute_eligible_traces"
+        ]
+    },
+    "institutional_steward": {
+        "rights": [
+            "review_commons_intelligence",
+            "propose_pattern_promotion",
+            "access_restricted_reference_intelligence"
+        ]
+    }
+}

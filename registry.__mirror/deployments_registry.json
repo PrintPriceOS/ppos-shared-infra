@@ -1,0 +1,20 @@
+{
+    "deployments": [
+        {
+            "deploymentId": "ppos_cloud_eu",
+            "profile": "multi_tenant_managed_cloud",
+            "region": "EU",
+            "serviceTier": "enterprise_plus",
+            "status": "enterprise_operational",
+            "activeTenants": 24
+        },
+        {
+            "deploymentId": "ppos_private_us",
+            "profile": "private_managed_instance",
+            "region": "US",
+            "serviceTier": "strategic_managed",
+            "status": "staging",
+            "activeTenants": 1
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "institutionally_bounded_commons": {
+        "promotion_requires": [
+            "evidence_diversity",
+            "anonymization_validation"
+        ],
+        "suppression_on": [
+            "high_leakage_risk",
+            "contested_validity"
+        ],
+        "fairness_model": "non_comparative_segmented"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "balanced": {
+        "cost": 0.25,
+        "trust": 0.25,
+        "delivery": 0.25,
+        "utilization": 0.25
+    },
+    "cost_optimized": {
+        "cost": 0.60,
+        "trust": 0.15,
+        "delivery": 0.15,
+        "utilization": 0.10
+    },
+    "trust_verified": {
+        "cost": 0.15,
+        "trust": 0.60,
+        "delivery": 0.15,
+        "utilization": 0.10
+    }
+}

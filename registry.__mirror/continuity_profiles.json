@@ -1,0 +1,8 @@
+{
+    "continuity_standard_robust": {
+        "posture": "monitoring",
+        "viabilityThreshold": 0.75,
+        "entropyThreshold": 0.40,
+        "driftSensitivity": "high"
+    }
+}

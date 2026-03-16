@@ -1,0 +1,32 @@
+{
+    "core_platform_standard": {
+        "id": "PPOS-CP-1",
+        "title": "Core Platform Standard",
+        "mandatoryControls": [
+            "trust_assertion_required",
+            "evidence_envelope_support"
+        ],
+        "referenceArchitecture": "managed_multi_tenant_federated"
+    },
+    "enterprise_managed_standard": {
+        "id": "PPOS-EM-1",
+        "title": "Enterprise Managed Operating Standard",
+        "mandatoryControls": [
+            "trust_assertion_required",
+            "evidence_envelope_support",
+            "governed_release_control",
+            "deployment_profile_resolution"
+        ],
+        "referenceArchitecture": "federated_enterprise_controlled"
+    },
+    "institutional_assured_standard": {
+        "id": "PPOS-IA-1",
+        "title": "Institutional Assured Standard",
+        "mandatoryControls": [
+            "*",
+            "cross_cluster_recovery_attestation",
+            "role_boundary_enforcement"
+        ],
+        "referenceArchitecture": "private_instance_controlled"
+    }
+}

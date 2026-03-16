@@ -1,0 +1,12 @@
+{
+    "segment_generalized": {
+        "minAggregationCohort": 3,
+        "maxLeakageRisk": "low",
+        "abstractionLevel": "market_segment"
+    },
+    "network_generalized": {
+        "minAggregationCohort": 8,
+        "maxLeakageRisk": "minimal",
+        "abstractionLevel": "ecosystem_wide"
+    }
+}

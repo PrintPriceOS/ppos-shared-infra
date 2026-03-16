@@ -1,0 +1,10 @@
+{
+  "quarantine_reason": "INVALID_SIGNATURE",
+  "quarantined_at": "2026-03-15T16:08:02.114Z",
+  "envelope": {
+    "event_id": "evt_003",
+    "event_name": "PolicyPublished",
+    "origin_region": "EU-PPOS-1",
+    "signature": "invalid-sig"
+  }
+}

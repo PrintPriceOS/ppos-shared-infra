@@ -1,0 +1,568 @@
+He preparado el documento canónico en Markdown listo para guardar en tu repo:
+
+````markdown
+# PrintPrice OS — Canonical Architecture
+
+**Status:** Canonical Reference  
+**Purpose:** Define the authoritative architecture of PrintPrice OS, including repository boundaries, runtime topology, control plane responsibilities, worker specialization, and federated printer connectivity.
+
+---
+
+## 1. Canonical Platform Overview
+
+PrintPrice OS is a **distributed production network operating system**.
+
+It is composed of:
+
+- a **Product App** for end users
+- a **Control Plane** for operators
+- a **Core Platform** for orchestration and economics
+- specialized **workers and services**
+- a **federated printer network**
+- shared **contracts** and **infra**
+- a local **bootstrap/integration workspace**
+
+The Product App is **not** the operating system.  
+It is a consumer of the OS through APIs, contracts, and thin bridges.
+
+---
+
+## 2. Canonical Repository Topology
+
+```mermaid
+flowchart TB
+    U[User / Customer] --> APP[preflight.printprice.pro<br/>Product App Repo]
+
+    OP[Operator / Admin] --> CP[control.printprice.pro<br/>Control Plane UI]
+
+    subgraph PRODUCT["Product Surface"]
+        APP
+    end
+
+    subgraph OS["PrintPrice OS"]
+        CORE[ppos-core-platform<br/>Platform Brain]
+        GOV[ppos-governance-assurance<br/>Governance / SLO / Resilience]
+        INFRA[ppos-shared-infra<br/>Shared Infra / Redis / DB / Utilities]
+        CONTRACTS[ppos-shared-contracts<br/>Contracts / Schemas / DTOs]
+        PRE_SERVICE[ppos-preflight-service<br/>HTTP API for Preflight]
+        PRE_WORKER[ppos-preflight-worker<br/>Async Workers]
+        PRE_ENGINE[ppos-preflight-engine<br/>Deterministic PDF Engine]
+        ORCH[ppos-build-orchestrator<br/>CI/CD / Promotion / Build]
+        BOOT[printprice-os-bootstrap<br/>Bootstrap / Local Integration / Init]
+    end
+
+    subgraph FED["Federated Production Network"]
+        AGENT[ppos-printer-agent<br/>External Printer Agent]
+        PRINTER[External Printer Node]
+    end
+
+    APP --> CORE
+    CP --> CORE
+    CP --> GOV
+
+    CORE --> PRE_SERVICE
+    PRE_SERVICE --> PRE_WORKER
+    PRE_WORKER --> PRE_ENGINE
+
+    CORE --> INFRA
+    GOV --> INFRA
+    PRE_SERVICE --> INFRA
+    PRE_WORKER --> INFRA
+
+    CORE --> CONTRACTS
+    GOV --> CONTRACTS
+    PRE_SERVICE --> CONTRACTS
+    PRE_WORKER --> CONTRACTS
+    AGENT --> CONTRACTS
+
+    CORE --> AGENT
+    AGENT --> PRINTER
+
+    BOOT -. local workspace / bootstrap .-> CORE
+    BOOT -. local workspace / bootstrap .-> GOV
+    BOOT -. local workspace / bootstrap .-> PRE_SERVICE
+    BOOT -. local workspace / bootstrap .-> PRE_WORKER
+    BOOT -. local workspace / bootstrap .-> PRE_ENGINE
+    BOOT -. local workspace / bootstrap .-> INFRA
+    BOOT -. local workspace / bootstrap .-> CONTRACTS
+    ORCH -. build / release / promotion .-> CORE
+    ORCH -. build / release / promotion .-> GOV
+    ORCH -. build / release / promotion .-> PRE_SERVICE
+    ORCH -. build / release / promotion .-> PRE_WORKER
+````
+
+---
+
+## 3. Product App Boundary Contract
+
+The Product App exists to serve **end users**.
+
+It may contain:
+
+* product UI / UX
+* upload flows
+* user authentication/session
+* job submission and viewing
+* thin BFF / ingress routes
+* lightweight adapters to OS APIs
+* product-side static assets
+
+It must **not** contain:
+
+* governance runtime
+* SLO evaluation loops
+* federation registry runtime
+* printer matching logic
+* redispatch logic
+* printer health logic
+* worker implementations
+* control plane runtime
+* printer agent code
+* background governance loops
+* operator-only platform logic
+
+### Boundary Rule
+
+If a piece of code:
+
+* runs in background
+* governs platform behavior
+* talks to printers
+* orchestrates dispatch
+* executes heavy jobs
+* or is meant for operators
+
+then it **does not belong** in the Product App.
+
+---
+
+## 4. Product App vs OS Boundary Diagram
+
+```mermaid
+flowchart LR
+    APP[Product App Repo] -->|Consumes APIs / SDK / Contracts| OS[PrintPrice OS Repos]
+
+    APPX[Forbidden inside Product App]
+    APPX --> X1[Governance Runtime]
+    APPX --> X2[Federation Matchmaker]
+    APPX --> X3[Redispatch Logic]
+    APPX --> X4[Printer Registry Runtime]
+    APPX --> X5[Workers]
+    APPX --> X6[Control Plane]
+    APPX --> X7[Printer Agent]
+
+    APPY[Allowed inside Product App]
+    APPY --> Y1[UI / UX]
+    APPY --> Y2[Upload Flow]
+    APPY --> Y3[User Session/Auth]
+    APPY --> Y4[Product BFF / Ingress]
+    APPY --> Y5[Job Submission / Status View]
+    APPY --> Y6[Thin Bridges to PPOS APIs]
+```
+
+---
+
+## 5. Canonical Runtime Topology
+
+```mermaid
+flowchart TB
+    USER[User] --> APP[Product App]
+    APP --> API[Product BFF / Submission Layer]
+
+    API --> CORE[ppos-core-platform]
+
+    CORE --> POL[Policy Enforcement]
+    CORE --> RES[Resource Governance]
+    CORE --> FAIR[Fair Scheduler]
+    CORE --> AI[AI Budget Governance]
+    CORE --> MATCH[Federated Matchmaker]
+
+    MATCH --> DISP[Dispatch Offer Service]
+    DISP --> AGENT[Printer Agent]
+    AGENT --> PRINTER[External Printer Node]
+
+    CORE --> PRE_SERVICE[ppos-preflight-service]
+    PRE_SERVICE --> PRE_WORKER[ppos-preflight-worker]
+    PRE_WORKER --> PRE_ENGINE[ppos-preflight-engine]
+
+    PRE_WORKER --> REDIS[(Redis Hot State)]
+    CORE --> REDIS
+    POL --> REDIS
+    RES --> REDIS
+    FAIR --> REDIS
+    AI --> REDIS
+
+    CORE --> MYSQL[(MySQL / Job Registry / Audit / Federation)]
+    GOV[ppos-governance-assurance] --> MYSQL
+    GOV --> REDIS
+```
+
+---
+
+## 6. Specialized Worker Pools
+
+```mermaid
+flowchart LR
+    subgraph POOLS["Specialized Runtime Pools"]
+        A[Pool A<br/>Heavy Compute<br/>PDF / Ghostscript / AI-heavy]
+        B[Pool B<br/>Transactional / Orchestration]
+        C[Pool C<br/>External I/O / Notifications / Webhooks]
+        D[Pool D<br/>Governance / Scheduler / Reconcile]
+    end
+
+    A --> AE[ppos-preflight-engine]
+    B --> CORE[ppos-core-platform]
+    C --> EXT[External Providers]
+    D --> GOV[ppos-governance-assurance]
+```
+
+### Pool Rule
+
+Pool D must never meaningfully contend with Pool A.
+
+---
+
+## 7. Repository Responsibilities
+
+### `printprice-os-bootstrap`
+
+Role:
+
+* bootstrap
+* local integration
+* seeding
+* initialization
+* multi-repo workspace utilities
+
+### `ppos-shared-infra`
+
+Role:
+
+* infra libraries
+* Redis/MySQL utilities
+* shared resilience/governance helpers where truly shared
+* Docker/bootstrap support as needed
+
+### `ppos-preflight-engine`
+
+Role:
+
+* deterministic PDF inspection
+* technical extraction
+* PDF safety logic
+* print-spec validation
+
+### `ppos-preflight-worker`
+
+Role:
+
+* background execution
+* subprocess orchestration
+* runtime leases / heartbeats
+* heavy compute execution
+
+### `ppos-preflight-service`
+
+Role:
+
+* HTTP service layer for preflight capabilities
+* service-side ingress to engine/worker functionality
+
+### `ppos-core-platform`
+
+Role:
+
+* platform brain
+* job registry
+* economics policy
+* matchmaking
+* federation dispatch orchestration
+
+### `ppos-shared-contracts`
+
+Role:
+
+* DTOs
+* JSON schemas
+* TypeScript interfaces
+* event contracts
+* canonical payloads
+
+### `ppos-build-orchestrator`
+
+Role:
+
+* build pipelines
+* release promotion
+* CI/CD workflows
+
+### `ppos-governance-assurance`
+
+Role:
+
+* governance
+* policy validation
+* SLO evaluation
+* resilience loops
+* rollback guardrails
+* runtime assurance
+
+### `ppos-printer-agent`
+
+Role:
+
+* remote printer connector
+* heartbeat
+* polling
+* accept/reject
+* package download
+* status reporting
+
+### `preflight-app`
+
+Role:
+
+* end-user product
+* upload & results
+* thin product-facing bridge to the OS
+
+---
+
+## 8. Federated Production Network
+
+```mermaid
+flowchart TB
+    CORE[ppos-core-platform] --> REG[Printer Capability Registry]
+    CORE --> AUTH[Secure Printer Connector Protocol]
+    CORE --> MATCH[Federated Matchmaker]
+    CORE --> OFFER[Dispatch Offer Service]
+    CORE --> PKG[Job Package Service]
+    CORE --> STATE[Production State Machine]
+    CORE --> HEALTH[Printer Health / SLA / Breakers]
+    CORE --> REDISP[Redispatch Service]
+
+    REG --> MATCH
+    AUTH --> OFFER
+    MATCH --> OFFER
+    OFFER --> PKG
+    PKG --> AGENT[ppos-printer-agent]
+    AGENT --> PRINTER[External Printer Node]
+
+    AGENT --> HEART[Heartbeat]
+    AGENT --> STATUS[Status Updates]
+    AGENT --> ACCEPT[Accept / Reject]
+    AGENT --> DOWNLOAD[Package Download]
+
+    HEART --> HEALTH
+    STATUS --> STATE
+    ACCEPT --> OFFER
+    DOWNLOAD --> PKG
+
+    HEALTH --> MATCH
+    HEALTH --> REDISP
+    STATE --> REDISP
+```
+
+---
+
+## 9. Federated Production State Machine
+
+```mermaid
+stateDiagram-v2
+    [*] --> MATCHING
+    MATCHING --> OFFERED
+    OFFERED --> ACCEPTED
+    OFFERED --> EXPIRED
+    OFFERED --> REJECTED
+
+    ACCEPTED --> PACKAGE_PREPARING
+    PACKAGE_PREPARING --> PACKAGE_READY
+    PACKAGE_READY --> DOWNLOADED
+    DOWNLOADED --> RECEIVED_BY_PRINTER
+
+    RECEIVED_BY_PRINTER --> QUEUED_AT_PRINTER
+    QUEUED_AT_PRINTER --> PRINTING
+    PRINTING --> POSTPROCESSING
+    POSTPROCESSING --> READY_TO_SHIP
+    READY_TO_SHIP --> SHIPPED
+    SHIPPED --> COMPLETED
+
+    RECEIVED_BY_PRINTER --> ON_HOLD
+    QUEUED_AT_PRINTER --> ON_HOLD
+    PRINTING --> ON_HOLD
+    POSTPROCESSING --> ON_HOLD
+
+    QUEUED_AT_PRINTER --> FAILED
+    PRINTING --> FAILED
+    POSTPROCESSING --> FAILED
+    ON_HOLD --> REDISPATCH_PENDING
+    FAILED --> REDISPATCH_PENDING
+```
+
+---
+
+## 10. Control Plane Responsibilities
+
+```mermaid
+flowchart TB
+    OP[Operator] --> UI[Control Plane UI]
+
+    UI --> GOVR[Governance]
+    UI --> SLO[SLO Monitoring]
+    UI --> RES[Resource Physics]
+    UI --> EFF[Efficiency Dashboard]
+    UI --> FED[Federation Cockpit]
+
+    FED --> PR[Printer Registry]
+    FED --> HM[Health Monitor]
+    FED --> DM[Dispatch Monitor]
+    FED --> SJ[Stuck Jobs]
+    FED --> TL[Job Timeline]
+    FED --> MO[Manual Overrides]
+
+    GOVR --> AUD[(Governance Audit)]
+    SLO --> AUD
+    RES --> REDIS[(Redis)]
+    RES --> MYSQL[(MySQL)]
+    EFF --> MYSQL
+    FED --> MYSQL
+    HM --> REDIS
+```
+
+The Control Plane is for:
+
+* operators
+* governance
+* federation operations
+* SLOs
+* resource and economic observability
+
+It is not part of the Product App.
+
+---
+
+## 11. Canonical Filesystem Target
+
+```text
+/PrintPriceOS
+  /preflight-app
+  /printprice-os-bootstrap
+  /ppos-core-platform
+  /ppos-governance-assurance
+  /ppos-shared-infra
+  /ppos-shared-contracts
+  /ppos-preflight-service
+  /ppos-preflight-worker
+  /ppos-preflight-engine
+  /ppos-build-orchestrator
+  /ppos-printer-agent
+```
+
+Every repo must have its own `.git`.
+
+No canonical repo should live as a nested subdirectory of the Product App.
+
+---
+
+## 12. Integration Workspace Rule
+
+A local multi-repo workspace is allowed and useful.
+
+However:
+
+* it is a **development integration workspace**
+* it is **not** the canonical Product App repo
+* it must not redefine ownership boundaries
+* it must not justify placing platform runtime inside the product surface
+
+---
+
+## 13. Repository Boundary Rules
+
+### Rule 1
+
+The Product App consumes the OS.
+It does not implement the OS.
+
+### Rule 2
+
+Background loops, schedulers, redispatchers, federation runtime, governance logic, and worker execution belong to OS repos, not Product App.
+
+### Rule 3
+
+Printer-facing logic belongs to federation/agent/runtime repos, not Product App.
+
+### Rule 4
+
+Operator-facing logic belongs to the Control Plane and governance repos, not Product App.
+
+### Rule 5
+
+Any code that can be classified as:
+
+* control plane
+* worker runtime
+* federation runtime
+* governance runtime
+* agent runtime
+
+must have a canonical home outside the Product App.
+
+---
+
+## 14. Deployment Boundary Rules
+
+### Product App
+
+Deploys independently to:
+
+* `preflight.printprice.pro`
+
+### Control Plane
+
+Deploys independently to:
+
+* `control.printprice.pro`
+
+### Worker / Service / Agent repos
+
+Deploy independently according to role:
+
+* workers
+* services
+* agents
+* governance loops
+
+### Bootstrap
+
+Is not the product deployment unit.
+
+---
+
+## 15. Canonical Success Condition
+
+The architecture is considered healthy when:
+
+* the Product App repo is clean and detached
+* each OS repo owns its runtime responsibilities
+* the control plane is independent
+* workers are independent
+* federation is independent
+* the integration workspace remains useful but non-authoritative
+* no new features violate these boundaries
+
+---
+
+## 16. Final Canonical Rule
+
+```text
+If a module governs, orchestrates, dispatches, executes, reconciles,
+or serves operators or printer nodes, it does not belong in the Product App.
+```
+
+---
+
+```
+
+
+```

@@ -1,0 +1,16 @@
+{
+  "quarantine_reason": "INVALID_SIGNATURE",
+  "quarantined_at": "2026-03-15T16:07:38.876Z",
+  "envelope": {
+    "event_id": "evt_005",
+    "event_name": "RegionHealthSummaryPublished",
+    "origin_region": "US-PPOS-1",
+    "payload": {
+      "status": "HEALTHY"
+    },
+    "signature": "HDAGBzA1EN5cCjWaj6qYnAw8Ksa0pEGI4fA9j3A74fj2wPsuNqRvi0DwbKMdZHWbITSQ89n6rNdohrzyXD9ACg==",
+    "signature_algorithm": "Ed25519",
+    "key_id": "test-key-v1",
+    "fss_version": "1.1"
+  }
+}

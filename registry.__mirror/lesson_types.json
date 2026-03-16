@@ -1,0 +1,14 @@
+{
+    "operational_incident": {
+        "impactClass": "operational",
+        "logic": "resilience_optimization"
+    },
+    "governance_exception": {
+        "impactClass": "institutional",
+        "logic": "authority_refinement"
+    },
+    "strategic_optimization": {
+        "impactClass": "strategic",
+        "logic": "efficiency_compounding"
+    }
+}

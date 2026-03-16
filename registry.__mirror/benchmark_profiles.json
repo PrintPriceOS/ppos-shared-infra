@@ -1,0 +1,20 @@
+{
+    "trust_benchmark": {
+        "minCohortSize": 5,
+        "normalizationModel": "weighted_trust_score",
+        "confidenceThresholds": {
+            "low": 0.5,
+            "moderate": 0.7,
+            "high": 0.85
+        }
+    },
+    "resilience_benchmark": {
+        "minCohortSize": 3,
+        "normalizationModel": "recovery_latency_index",
+        "confidenceThresholds": {
+            "low": 0.4,
+            "moderate": 0.6,
+            "high": 0.8
+        }
+    }
+}

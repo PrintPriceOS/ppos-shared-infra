@@ -1,0 +1,29 @@
+{
+    "strategic_standard_balanced": {
+        "autonomyMode": "operator_guided",
+        "governanceLimits": {
+            "maxInterventionPriority": "high",
+            "requireApprovalFor": [
+                "routing_policy_adjustment",
+                "service_commitment_shift"
+            ]
+        },
+        "riskThresholds": {
+            "critical": 0.85,
+            "high": 0.70
+        }
+    },
+    "strategic_resilience_mode": {
+        "autonomyMode": "controlled_automatic",
+        "governanceLimits": {
+            "maxInterventionPriority": "critical",
+            "requireApprovalFor": [
+                "strategic_partner_exclusion"
+            ]
+        },
+        "riskThresholds": {
+            "critical": 0.70,
+            "high": 0.50
+        }
+    }
+}

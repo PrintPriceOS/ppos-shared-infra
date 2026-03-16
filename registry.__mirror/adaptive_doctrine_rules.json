@@ -1,0 +1,15 @@
+{
+    "adaptive_doctrine_rules": {
+        "pressure_thresholds": {
+            "moderate": 0.65,
+            "high": 0.82,
+            "urgent": 0.90
+        },
+        "posture_mapping": {
+            "low_pressure": "observe_only",
+            "moderate_pressure": "controlled_doctrine_evolution",
+            "high_pressure": "heightened_revision_watch",
+            "critical_pressure": "urgent_revision_required"
+        }
+    }
+}

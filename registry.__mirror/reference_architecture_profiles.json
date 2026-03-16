@@ -1,0 +1,17 @@
+{
+    "federated_enterprise_controlled": {
+        "title": "Federated Enterprise Controlled Pattern",
+        "description": "High-assurance deployment with strict isolation and strategic visibility.",
+        "suitability": "Global Enterprises"
+    },
+    "managed_multi_tenant_federated": {
+        "title": "Managed Multi-Tenant Federated Pattern",
+        "description": "Balanced deployment for standard network participation.",
+        "suitability": "SME Print Networks"
+    },
+    "private_instance_controlled": {
+        "title": "Private Instance Controlled Pattern",
+        "description": "Restricted deployment for high-security institutional use cases.",
+        "suitability": "Government/Institutional"
+    }
+}

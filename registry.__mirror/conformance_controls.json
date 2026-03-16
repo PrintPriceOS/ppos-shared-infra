@@ -1,0 +1,8 @@
+{
+    "GOV_01": "Explicit Release Governance",
+    "GOV_02": "Role-Based Operating Boundaries",
+    "PRO_01": "Versioned Protocol Conformance",
+    "TRU_01": "Mandatory Peer Trust Assertions",
+    "EVI_01": "Transaction Evidence Attachment",
+    "RES_01": "Verified Recovery Attestation"
+}

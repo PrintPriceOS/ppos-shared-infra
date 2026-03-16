@@ -1,0 +1,10 @@
+{
+    "execution_policy": {
+        "governanceMode": "audited_build_program",
+        "rules": {
+            "requireFoundationBeforeFederation": true,
+            "requireProtocolBeforeIntelligence": true,
+            "blockOutOfSequenceLayers": true
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "topology": {
+        "repos": {
+            "ppos-kernel": [
+                "V10",
+                "V11",
+                "V21"
+            ],
+            "ppos-federation": [
+                "V22",
+                "V22.5"
+            ],
+            "ppos-intelligence": [
+                "V23",
+                "V24",
+                "V29"
+            ],
+            "ppos-institutional": [
+                "V25",
+                "V26",
+                "V30"
+            ]
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+  "policy:POL-V17": {
+    "state_version": 1,
+    "authority_epoch": 1,
+    "updated_at": "2026-03-15T16:39:07.762Z"
+  },
+  "printer:PRN-V17": {
+    "state_version": 1,
+    "authority_epoch": 1,
+    "updated_at": "2026-03-15T16:39:07.764Z"
+  }
+}

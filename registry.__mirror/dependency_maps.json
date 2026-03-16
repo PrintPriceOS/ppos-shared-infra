@@ -1,0 +1,26 @@
+{
+    "dependency_contracts": {
+        "logic": [
+            {
+                "from": "V22.5",
+                "to": "V22",
+                "type": "hard"
+            },
+            {
+                "from": "V23",
+                "to": "V22",
+                "type": "hard"
+            },
+            {
+                "from": "V26",
+                "to": "V25",
+                "type": "hard"
+            },
+            {
+                "from": "V30",
+                "to": "V26",
+                "type": "hard"
+            }
+        ]
+    }
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "obj_trusted_utilization",
+        "title": "Maximize Trusted Utilization",
+        "description": "Ensure production is routed to the highest-trust nodes that satisfy constraints.",
+        "priority": "high"
+    },
+    {
+        "id": "obj_protect_enterprise_plus",
+        "title": "Protect Enterprise Plus Commitments",
+        "description": "Never allow premium service tiers to degrade during regional stress.",
+        "priority": "critical"
+    },
+    {
+        "id": "obj_reduce_concentration",
+        "title": "Reduce Capacity Concentration",
+        "description": "Mitigate risk by expanding the pool of verified suppliers in stressed regions.",
+        "priority": "moderate"
+    }
+]

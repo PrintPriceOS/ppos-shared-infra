@@ -1,0 +1,18 @@
+[
+    {
+        "nodeId": "printer_berlin_01",
+        "organizationType": "printer",
+        "region": "EU",
+        "capabilityExposure": "public_exchange",
+        "trustLevel": "verified_partner",
+        "status": "active"
+    },
+    {
+        "nodeId": "publisher_alpha",
+        "organizationType": "publisher",
+        "region": "EU",
+        "capabilityExposure": "partner_only",
+        "trustLevel": "strategic_partner",
+        "status": "active"
+    }
+]

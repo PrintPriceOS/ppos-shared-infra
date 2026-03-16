@@ -1,0 +1,30 @@
+{
+    "repository_classes": {
+        "core_domain_repo": {
+            "hasPackages": true,
+            "hasScripts": true,
+            "hasConfigs": true,
+            "requiredDocs": [
+                "README.md",
+                "ARCHITECTURE.md",
+                "OWNERSHIP.md"
+            ]
+        },
+        "shared_contract_repo": {
+            "hasPackages": true,
+            "isAuthority": true,
+            "requiredDocs": [
+                "README.md",
+                "PROTOCOL.md"
+            ]
+        },
+        "shared_registry_repo": {
+            "hasPolicies": true,
+            "isAuthority": true,
+            "requiredDocs": [
+                "README.md",
+                "REGISTRY.md"
+            ]
+        }
+    }
+}

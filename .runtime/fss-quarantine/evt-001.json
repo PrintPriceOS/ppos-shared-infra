@@ -1,0 +1,17 @@
+{
+  "quarantine_reason": "INVALID_SIGNATURE",
+  "quarantined_at": "2026-03-15T11:07:33.042Z",
+  "envelope": {
+    "event_id": "evt-001",
+    "event_name": "PolicyPublished",
+    "origin_region": "EU-PPOS-1",
+    "entity_type": "governance_policy",
+    "entity_id": "policy-r13",
+    "payload": {
+      "id": "policy-r13",
+      "name": "Global Lockdown"
+    },
+    "signature": "FORGED_SIG",
+    "signature_algorithm": "Ed25519"
+  }
+}

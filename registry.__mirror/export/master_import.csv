@@ -1,0 +1,67 @@
+Repo,Issue ID,Type,Title,Status,Priority,Epic,Capability,Labels,Dependencies,Acceptance Criteria
+ppos-shared-contracts,SC-01.1.1,story,"Add exchange-node.schema.json",todo,P0,"SC-01 Federation Contracts","SC-01.1 Core federation schemas","foundation, contracts, shared, wave:1","","- schema file exists under federation-contracts/src/schemas
+- schema compiles with AJV
+- schema title is ExchangeNode"
+ppos-shared-contracts,SC-01.1.2,story,"Add capability-publication.schema.json",todo,P0,"SC-01 Federation Contracts","SC-01.1 Core federation schemas","foundation, contracts, shared, wave:1","","- schema file exists under federation-contracts/src/schemas
+- schema compiles with AJV
+- schema title is CapabilityPublication"
+ppos-shared-contracts,SC-01.1.3,story,"Add assignment-contract.schema.json",todo,P0,"SC-01 Federation Contracts","SC-01.1 Core federation schemas","foundation, contracts, shared, wave:1","","- schema file exists under federation-contracts/src/schemas
+- schema compiles with AJV
+- schema title is AssignmentContract"
+ppos-shared-contracts,SC-01.2.1,story,"Add ExchangeNode type",todo,P0,"SC-01 Federation Contracts","SC-01.2 Core federation types","foundation, contracts, shared, wave:1","SC-01.1.1","- type exported from federation-contracts/src/index.ts
+- type aligns with exchange-node schema fields"
+ppos-shared-contracts,SC-01.2.2,story,"Add CapabilityPublication type",todo,P0,"SC-01 Federation Contracts","SC-01.2 Core federation types","foundation, contracts, shared, wave:1","SC-01.1.2","- type exported from federation-contracts/src/index.ts
+- type aligns with capability-publication schema fields"
+ppos-shared-contracts,SC-01.2.3,story,"Add AssignmentContract type",todo,P0,"SC-01 Federation Contracts","SC-01.2 Core federation types","foundation, contracts, shared, wave:1","SC-01.1.3","- type exported from federation-contracts/src/index.ts
+- type aligns with assignment-contract schema fields"
+ppos-shared-contracts,SC-01.3.1,story,"Implement validateFederationContractSet",todo,P1,"SC-01 Federation Contracts","SC-01.3 Federation validators","foundation, contracts, shared, wave:1","SC-01.1.1, SC-01.1.2, SC-01.1.3","- validator returns valid or invalid deterministically
+- invalid non-object input fails safely
+- validator exported from index"
+ppos-shared-contracts,SC-01.3.2,story,"Add federation schema load tests",todo,P1,"SC-01 Federation Contracts","SC-01.3 Federation validators","foundation, contracts, shared, wave:1","SC-01.1.1, SC-01.1.2, SC-01.1.3","- tests load all federation schemas
+- tests pass in vitest"
+ppos-shared-contracts,SC-02.1.1,story,"Add governance-assertion.schema.json",todo,P0,"SC-02 Governance Contracts","SC-02.1 Governance assertion","foundation, contracts, shared, wave:1","","- schema exists and validates
+- schema title is GovernanceAssertion"
+ppos-shared-contracts,SC-02.1.2,story,"Add GovernanceAssertion type",todo,P0,"SC-02 Governance Contracts","SC-02.1 Governance assertion","foundation, contracts, shared, wave:1","SC-02.1.1","- type exported from governance-contracts
+- type aligns with governance assertion schema"
+ppos-shared-contracts,SC-03.1.1,story,"Add evidence-envelope.schema.json",todo,P0,"SC-03 Evidence Contracts","SC-03.1 Evidence envelope","foundation, contracts, shared, wave:1","","- schema exists and validates
+- schema title is EvidenceEnvelope"
+ppos-shared-contracts,SC-03.1.2,story,"Add EvidenceEnvelope type",todo,P0,"SC-03 Evidence Contracts","SC-03.1 Evidence envelope","foundation, contracts, shared, wave:1","SC-03.1.1","- type exported from evidence-contracts
+- type aligns with evidence envelope schema"
+ppos-shared-contracts,SC-04.1.1,story,"Add trust-record.schema.json",todo,P0,"SC-04 Trust Contracts","SC-04.1 Trust record","foundation, contracts, shared, wave:1","","- schema exists and validates
+- schema title is TrustRecord"
+ppos-shared-contracts,SC-04.1.2,story,"Add TrustRecord type",todo,P0,"SC-04 Trust Contracts","SC-04.1 Trust record","foundation, contracts, shared, wave:1","SC-04.1.1","- type exported from trust-contracts
+- type aligns with trust record schema"
+ppos-shared-contracts,SC-05.1.1,story,"Add contract family version markers",todo,P1,"SC-05 Contract Governance","SC-05.1 Versioning","foundation, contracts, shared, wave:1","SC-01.2.1, SC-02.1.2, SC-03.1.2, SC-04.1.2","- version constant present per family
+- version exported publicly"
+ppos-shared-contracts,SC-05.1.2,story,"Add schema duplication checks",todo,P1,"SC-05 Contract Governance","SC-05.1 Versioning","foundation, contracts, shared, wave:1","","- check-schema-duplication script runs
+- duplicate authoritative schemas can be detected"
+ppos-shared-contracts,SC-05.1.3,story,"Add cross-family compatibility tests",todo,P2,"SC-05 Contract Governance","SC-05.1 Versioning","foundation, contracts, shared, wave:1","SC-01.3.2, SC-02.1.2, SC-03.1.2, SC-04.1.2","- compatibility suite exists at repo level
+- contract families load together without failure"
+ppos-shared-registry,SR-01.1.1,story,"Add governance default policy JSON",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- governance policy file exists
+- policyProfile field set
+- file validates against schema"
+ppos-shared-registry,SR-01.1.2,story,"Add governance policy schema",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- governance schema exists
+- schema validates default governance policy"
+ppos-shared-registry,SR-01.1.3,story,"Add federation default policy JSON",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- federation policy file exists
+- minimumTrustTier field present
+- file validates against schema"
+ppos-shared-registry,SR-01.1.4,story,"Add federation policy schema",todo,P0,"SR-01 Policy Profiles","SR-01.1 Governance and federation policies","foundation, registry, policies, wave:1","","- federation schema exists
+- schema validates federation default policy"
+ppos-shared-registry,SR-01.2.1,story,"Add economy policy JSON",todo,P1,"SR-01 Policy Profiles","SR-01.2 Advanced domain policies","foundation, registry, policies, wave:1","","- economy policy file exists
+- pricing fields present"
+ppos-shared-registry,SR-01.2.2,story,"Add strategic-command policy JSON",todo,P1,"SR-01 Policy Profiles","SR-01.2 Advanced domain policies","foundation, registry, policies, wave:1","","- strategic-command policy file exists
+- approvalRequiredFor array present"
+ppos-shared-registry,SR-01.2.3,story,"Add foresight policy JSON",todo,P1,"SR-01 Policy Profiles","SR-01.2 Advanced domain policies","foundation, registry, policies, wave:1","","- foresight policy file exists
+- weakSignalPromotion field present"
+ppos-docs-architecture,DA-01.1.1,story,"Write platform-kernel architecture doc",todo,P1,"DA-01 Architecture Documentation","DA-01.1 Core architecture docs","foundation, docs, architecture, wave:1","CP-01.2.1","- platform-kernel.md exists
+- documents repo boundary and owned packages"
+ppos-core-platform,CP-01.1.1,story,"Implement resolveInputEnvelope",todo,P0,"CP-01 Kernel State","CP-01.1 Input normalization","foundation, platform, runtime, wave:1","","- returns object for valid object input
+- returns empty object for null or undefined input"
+ppos-core-platform,CP-01.2.1,story,"Implement buildPlatformKernelState",todo,P0,"CP-01 Kernel State","CP-01.2 Platform kernel builder","foundation, platform, runtime, wave:1","CP-01.1.1","- returns deterministic kernel state
+- includes normalizedInput
+- status is ready degraded or undetermined"
+ppos-governance-assurance,GA-01.1.1,story,"Implement resolveReleaseGate",todo,P0,"GA-01 Release Governance","GA-01.1 Governance state","foundation, governance, assurance, wave:1","SR-01.1.1","- releaseMode input resolves to gate string
+- default controlled gate applied when missing"
+ppos-federation-protocol,FP-01.2.1,story,"Implement validateFepMessage",todo,P0,"FP-01 FEP Protocol","FP-01.2 FEP message validation","foundation, protocol, federation, wave:1","FP-01.1.1, SC-01.1.1","- null or invalid envelope rejected
+- missing messageType rejected
+- scaffold-valid message returns controlled output"

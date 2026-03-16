@@ -1,0 +1,39 @@
+{
+    "foundation_trees": {
+        "ppos-shared-contracts": {
+            "root_files": [
+                "README.md",
+                "LICENSE",
+                "package.json",
+                "pnpm-workspace.yaml"
+            ],
+            "folders": [
+                "packages/",
+                "docs/families/",
+                "scripts/"
+            ]
+        },
+        "ppos-federation-protocol": {
+            "root_files": [
+                "README.md",
+                "ARCHITECTURE.md",
+                "package.json"
+            ],
+            "folders": [
+                "packages/fep-protocol/",
+                "examples/fep/",
+                "docs/protocols/"
+            ]
+        },
+        "ppos-core-platform": {
+            "root_files": [
+                "README.md",
+                "pnpm-workspace.yaml"
+            ],
+            "folders": [
+                "packages/kernel-state/",
+                "packages/runtime-foundation/"
+            ]
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "memory_record": {
+        "description": "Raw auditable trace of an operational or governance event.",
+        "retention": "permanent"
+    },
+    "lesson": {
+        "description": "Specific observation or 'post-mortem' finding from a memory record.",
+        "retention": "long_term"
+    },
+    "pattern": {
+        "description": "Recurring observation across multiple lessons.",
+        "retention": "permanent"
+    },
+    "doctrine": {
+        "description": "Canonical, versioned operating guideline derived from patterns.",
+        "retention": "permanent"
+    },
+    "precedent": {
+        "description": "Reference decision with documented rationale for future consistency.",
+        "retention": "permanent"
+    }
+}

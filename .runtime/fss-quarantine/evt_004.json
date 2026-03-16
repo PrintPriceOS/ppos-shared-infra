@@ -1,0 +1,16 @@
+{
+  "quarantine_reason": "UNAUTHORIZED_SENDER",
+  "quarantined_at": "2026-03-15T16:08:02.116Z",
+  "envelope": {
+    "event_id": "evt_004",
+    "event_name": "PolicyPublished",
+    "origin_region": "US-PPOS-1",
+    "payload": {
+      "policy_id": "POL-BAD"
+    },
+    "signature_algorithm": "Ed25519",
+    "key_id": "test-key-v1",
+    "fss_version": "1.1",
+    "signature": "CeRFTURHokflijSg3IapNRIErwgmqa9RlAYOLxFw6uSn+10HJjcFn9exDkVMp+hXzUJVvsfvZvp3BySBcyinBg=="
+  }
+}

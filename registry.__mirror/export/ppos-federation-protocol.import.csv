@@ -1,0 +1,4 @@
+Issue ID,Type,Title,Status,Priority,Epic,Capability,Labels,Dependencies,Acceptance Criteria
+FP-01.2.1,story,"Implement validateFepMessage",todo,P0,"FP-01 FEP Protocol","FP-01.2 FEP message validation","foundation, protocol, federation, wave:1","FP-01.1.1, SC-01.1.1","- null or invalid envelope rejected
+- missing messageType rejected
+- scaffold-valid message returns controlled output"

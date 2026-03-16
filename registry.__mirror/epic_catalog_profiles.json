@@ -1,0 +1,7 @@
+{
+    "epic_catalog": {
+        "EPIC-P1-01": "Core State Composition Engine",
+        "EPIC-P1-02": "Release Governance Contracts",
+        "EPIC-P2-03": "FEP Base Envelope & Validation"
+    }
+}

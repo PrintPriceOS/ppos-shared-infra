@@ -1,0 +1,16 @@
+{
+    "foresight_standard_balanced": {
+        "posture": "monitoring",
+        "horizons": {
+            "immediate": "0-30 days",
+            "near_term": "1-2 quarters",
+            "medium_term": "2-6 quarters",
+            "long_term": "6+ quarters"
+        },
+        "plausibilityWeights": {
+            "recurrence": 0.25,
+            "signalStability": 0.20,
+            "governanceRelevance": 0.15
+        }
+    }
+}

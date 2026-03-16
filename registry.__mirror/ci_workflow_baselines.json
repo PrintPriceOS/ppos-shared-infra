@@ -1,0 +1,13 @@
+{
+    "ci_baselines": {
+        "standard_gate": {
+            "workflows": [
+                "ci-lint.yml",
+                "ci-test.yml",
+                "ci-contracts.yml",
+                "ci-schemas.yml",
+                "ci-docs.yml"
+            ]
+        }
+    }
+}

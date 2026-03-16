@@ -1,0 +1,11 @@
+{
+  "default": {
+    "trustThreshold": 0.7,
+    "tiers": {
+      "unverified": { "min": 0.0, "max": 0.6 },
+      "basic": { "min": 0.6, "max": 0.8 },
+      "verified_partner": { "min": 0.8, "max": 0.9 },
+      "strategic_partner": { "min": 0.9, "max": 1.0 }
+    }
+  }
+}

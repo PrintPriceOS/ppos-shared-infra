@@ -1,0 +1,27 @@
+{
+  "event_id": "v17_003",
+  "event_name": "PolicyPublished",
+  "reason_code": "STALE_VERSION",
+  "quarantined_at": "2026-03-15T16:39:07.765Z",
+  "retryable": true,
+  "resolution_status": "PENDING",
+  "details": {
+    "reason": "Stale state version: Event(0) < Local(1)"
+  },
+  "envelope": {
+    "event_id": "v17_003",
+    "event_name": "PolicyPublished",
+    "origin_region": "EU-PPOS-1",
+    "entity_type": "policy",
+    "entity_id": "POL-V17",
+    "state_version": 0,
+    "authority_epoch": 1,
+    "payload": {
+      "data": "old"
+    },
+    "signature_algorithm": "Ed25519",
+    "key_id": "test-key-v1",
+    "fss_version": "1.1",
+    "signature": "Xac/26eCcdBANZP6xhKOVZ1An2oBDVM5Eq46IiJOvbMYOwNrat9PderLBwKehIH8TaowTzbrjVM74Re6b32qDQ=="
+  }
+}

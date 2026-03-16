@@ -1,0 +1,44 @@
+{
+    "platform_ops_authority": {
+        "title": "Platform Operations Authority",
+        "scope": [
+            "matchmaking",
+            "routing",
+            "tenant_management"
+        ],
+        "legitimacyLevel": "operational"
+    },
+    "strategic_command_authority": {
+        "title": "Strategic Command Authority",
+        "scope": [
+            "network_optimization",
+            "strategic_intervention"
+        ],
+        "legitimacyLevel": "strategic"
+    },
+    "protocol_review_council": {
+        "title": "Protocol Review Council",
+        "scope": [
+            "fep_evolution",
+            "compatibility_standardization"
+        ],
+        "legitimacyLevel": "institutional"
+    },
+    "institutional_assurance_board": {
+        "title": "Institutional Assurance Board",
+        "scope": [
+            "operating_standard_maintenance",
+            "certification_oversight"
+        ],
+        "legitimacyLevel": "institutional"
+    },
+    "constitutional_review_group": {
+        "title": "Constitutional Review Group",
+        "scope": [
+            "meta_governance",
+            "authority_oversight",
+            "constitutional_evolution"
+        ],
+        "legitimacyLevel": "constitutional"
+    }
+}

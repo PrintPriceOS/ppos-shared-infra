@@ -1,0 +1,18 @@
+{
+    "ms_alpha_routing": {
+        "label": "Federated Alpha",
+        "acceptanceCriteria": [
+            "fep_stabilized",
+            "cross_tenant_routing_operational",
+            "evidence_envelope_signing_active"
+        ]
+    },
+    "ms_institutional_beta": {
+        "label": "Autonomous Institutional Beta",
+        "acceptanceCriteria": [
+            "standard_adoption_visible",
+            "meta_governance_consensus_operational",
+            "constitutional_limits_enforced"
+        ]
+    }
+}

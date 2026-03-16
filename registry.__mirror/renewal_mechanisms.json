@@ -1,0 +1,14 @@
+{
+    "doctrine_refresh": {
+        "cycleInterval": "2_years",
+        "reviewRequirement": "civilizational_stewardship_audit"
+    },
+    "governance_audit": {
+        "cycleInterval": "5_years",
+        "reviewRequirement": "constitutional_legitimacy_review"
+    },
+    "standard_review": {
+        "cycleInterval": "3_years",
+        "reviewRequirement": "high_adoption_consensus"
+    }
+}

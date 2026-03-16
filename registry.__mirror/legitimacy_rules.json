@@ -1,0 +1,14 @@
+{
+    "protocol_minor_extension": {
+        "approvalPath": "protocol_review_council",
+        "evidenceThreshold": "low"
+    },
+    "protocol_breaking_change": {
+        "approvalPath": "full_institutional_review",
+        "evidenceThreshold": "high"
+    },
+    "constitutional_change": {
+        "approvalPath": "supreme_constitutional_review",
+        "evidenceThreshold": "critical"
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "event_id": "v17_002",
+  "event_name": "PrinterNodeRegistered",
+  "reason_code": "EXECUTION_FAILED",
+  "quarantined_at": "2026-03-15T16:35:32.823Z",
+  "retryable": true,
+  "resolution_status": "PENDING",
+  "details": {
+    "error": ""
+  },
+  "envelope": {
+    "event_id": "v17_002",
+    "event_name": "PrinterNodeRegistered",
+    "origin_region": "EU-PPOS-1",
+    "entity_type": "printer",
+    "entity_id": "PRN-V17",
+    "state_version": 1,
+    "authority_epoch": 1,
+    "payload": {
+      "id": "PRN-V17",
+      "capabilities": [
+        "3d-print"
+      ]
+    },
+    "signature_algorithm": "Ed25519",
+    "key_id": "test-key-v1",
+    "fss_version": "1.1",
+    "signature": "Akmn2ZaSvzHBq3/OVpEwIWahYNa9BtE9jXzis3cAr83PD+mqFYDP9JEMdsElZWM3kjKc1Z/O+6tfQQ57i3eMDw=="
+  }
+}
