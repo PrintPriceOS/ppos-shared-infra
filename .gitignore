@@ -23,3 +23,9 @@ PrintPriceOS_Workspace/
 runtime-test-workspace/
 ppos-shared-infra-stub/
 temp_shared_infra/
+
+# Cleanup and Operational Folders
+workspace/
+output_workspace/
+uploads-v2-temp/
+uploads-quarantine/
