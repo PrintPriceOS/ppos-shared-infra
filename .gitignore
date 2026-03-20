@@ -19,6 +19,12 @@
 !/config/
 !/packages/
 !/*.sql
+!/*.yml
+!/*.yaml
+!/*.json
+!/*.md
+!/*.js
+
 
 # 4. Ignorar explícitamente dentro de las carpetas permitidas
 node_modules/
