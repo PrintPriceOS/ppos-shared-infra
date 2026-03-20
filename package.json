@@ -28,8 +28,6 @@
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
     "@heroicons/react": "^2.2.0",
-    "@ppos/core-platform": "file:./workspace/PrintPriceOS_Workspace/ppos-core-platform",
-    "@ppos/shared-infra": "file:./workspace/PrintPriceOS_Workspace/ppos-shared-infra",
     "adm-zip": "^0.5.16",
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",

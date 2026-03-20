@@ -17,6 +17,7 @@
 !/app/
 !/frontend/
 !/config/
+!/packages/
 !/*.sql
 
 # 4. Ignorar explícitamente dentro de las carpetas permitidas
