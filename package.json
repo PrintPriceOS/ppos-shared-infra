@@ -1,0 +1,81 @@
+{
+  "name": "pdf-preflight-check",
+  "private": true,
+  "version": "1.0.0",
+  "author": {
+    "name": "Manuel Enrique Morales",
+    "url": "https://manuelenriquemorales.com/"
+  },
+  "description": "PrintPrice Pro - Production Intelligence Platform",
+  "main": "app/server.js",
+  "engines": {
+    "node": ">=20 <21 || >=22"
+  },
+  "scripts": {
+    "preinstall": "node -e \"const v=process.versions.node.split('.')[0]; if(v<20) {console.error('ERROR: Node.js 20 or 22+ required'); process.exit(1)}\"",
+    "dev": "vite frontend --config frontend/vite.config.ts",
+    "build": "vite build frontend --config frontend/vite.config.ts",
+    "build:frontend": "npm run build",
+    "preview": "vite preview frontend --config frontend/vite.config.ts",
+    "start": "node app/server.js",
+    "test:front": "vitest",
+    "boundary-check": "node scripts/boundary-check.js",
+    "validate:ppos": "node scripts/validate-ppos-bridge.js"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "*"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "@heroicons/react": "^2.2.0",
+    "@ppos/core-platform": "file:./workspace/PrintPriceOS_Workspace/ppos-core-platform",
+    "@ppos/shared-infra": "file:./workspace/PrintPriceOS_Workspace/ppos-shared-infra",
+    "adm-zip": "^0.5.16",
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "dompurify": "^3.3.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "fuse.js": "^7.1.0",
+    "helmet": "^8.0.0",
+    "ioredis": "^5.10.0",
+    "jsonwebtoken": "^9.0.3",
+    "marked": "^16.4.1",
+    "multer": "^2.0.2",
+    "mysql2": "^3.18.2",
+    "nodemailer": "^8.0.1",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^4.6.82",
+    "pino-http": "^10.4.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-window": "^1.8.10",
+    "webworker": "^0.8.4",
+    "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.34.4",
+    "form-data": "^4.0.5",
+    "fs-extra": "^11.3.4",
+    "jsdom": "^24.1.1",
+    "prettier": "^3.3.3",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "vitest": "^2.0.0"
+  }
+}
