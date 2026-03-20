@@ -17,7 +17,6 @@
 !/app/
 !/frontend/
 !/config/
-!/workspace/
 !/*.sql
 
 # 4. Ignorar explícitamente dentro de las carpetas permitidas
@@ -27,6 +26,7 @@ build/
 .env
 *.log
 .DS_Store
+workspace/
 
 # 5. Ignorar carpetas de datos (en caso de que existan)
 /jobs/
