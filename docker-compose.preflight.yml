@@ -68,4 +68,5 @@ volumes:
 networks:
   ppos-network:
     external: true
+    name: docker_default
 
