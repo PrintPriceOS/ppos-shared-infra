@@ -35,6 +35,7 @@ services:
       REDIS_PORT: 6379
       ADMIN_API_KEY: ${ADMIN_API_KEY:-ppos-staging-token-2026}
       PPOS_REGION_ID: eu-central-1
+      PPOS_UPLOADS_DIR: /tmp/ppos-preflight
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
     networks:
@@ -59,6 +60,7 @@ services:
       REDIS_HOST: ppos-redis
       REDIS_PORT: 6379
       PPOS_REGION_ID: eu-central-1
+      PPOS_UPLOADS_DIR: /tmp/ppos-preflight
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
     networks:
@@ -70,5 +72,5 @@ volumes:
 networks:
   ppos-network:
     external: true
-    name: docker_default
+    name: printprice-os_ppos-network
 
