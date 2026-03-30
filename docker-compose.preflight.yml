@@ -69,8 +69,8 @@ services:
 volumes:
   ppos-uploads:
 
+
 networks:
   ppos-network:
     external: true
     name: printprice-os_ppos-network
-
