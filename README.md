@@ -1,75 +1,92 @@
-# PrintPrice Pro - Preflight App (V2 Decoupled)
+# PrintPrice OS — Shared Infrastructure (`ppos-shared-infra`)
 
-**A product by Print Price Pro**  
-**Author:** Dr. Leuman  
-**Architecture:** PrintPrice OS V2 Powered (Decoupled)  
-**Website:** [https://printprice.pro/](https://printprice.pro/)
+## 1. Repository Role
+The `ppos-shared-infra` repository serves as the **Operational Backbone** of the PrintPrice OS ecosystem. It provides a standardized set of libraries and services that handle cross-cutting concerns such as data persistence, asynchronous messaging, governance, and federated state synchronization.
 
-## Overview
+## 2. Architecture Position
+Inside the PrintPrice OS fabric, Shared Infra sits at the foundational layer. All other services including `preflight`, `control-plane`, and `worker` nodes consume this repository as a shared dependency to ensure consistent behavior across regional boundaries.
 
-**PrintPrice Pro Preflight** is the next-generation PDF analysis and transformation platform. Formerly a monolith, it has been re-architected in **Phase 10** into a decoupled, high-performance application that leverages the **PrintPrice OS (PPOS)** as its core intelligence engine.
+```mermaid
+graph TD
+    subgraph "Application Layer"
+        PRODUCT[Product App]
+    end
+    
+    subgraph "Service Layer"
+        SVC[Preflight Service]
+        WRK[Preflight Worker]
+        CP[Control Plane]
+    end
+    
+    subgraph "Foundation (ppos-shared-infra)"
+        GOV[Governance & Policy]
+        RES[Resilience & Circuit Breakers]
+        FSS[Federated State Sync]
+        DATA[Data & Queue Abstractions]
+    end
+    
+    SVC --> GOV
+    WRK --> DATA
+    CP --> FSS
+    SVC --> RES
+```
 
-This application provides the frontend and the bridge service to interact with the Dockerized PPOS infrastructure, ensuring enterprise-grade scalability, observability, and security.
+## 3. Repository Structure
+```text
+packages/
+  comms/        # Email/Webhook notification services
+  data/         # MySQL (db) and Redis (queue) abstractions
+  federation/   # Regional registries and policy resolvers
+  fss/          # Federated State Sync protocols
+  governance/   # Policy enforcement and resource governance
+  ops/          # Metrics, Secret Manager, Provisioning
+  region/       # Regional context and multi-region helpers
+  resilience/   # Circuit breakers and retry managers
+index.js        # Main entry point (facade)
+package.json
+```
 
-## Key Features
+## 4. Responsibilities
+- **Data & Lifecycle**: Standardized database and queue connectors.
+- **Federated Governance**: Enforcement of regional and global production policies.
+- **Resilience**: Integrated circuit breakers and retry management for distributed calls.
+- **Multi-Region Coordination**: Federated State Sync (FSS) protocols (Drift, Convergence, Replay).
+- **Observability**: Shared metrics, secret management, and operational logging.
 
-- **Advanced Preflight Analysis:** Powered by the PPOS Preflight Service.
-- **PPOS Integration:** Real-time job status tracking via Temporal and Redis.
-- **Enterprise Auth Overlay:** Multi-tenant awareness and JWT security.
-- **Unified API Client:** Simplified communication with the PPOS Gateway.
-- **PDF Transformations:** Professional-grade conversion (CMYK, Grayscale, Rebuild DPI) via the Ghostscript-powered PPOS Engine.
+## 5. Dependency Relationships
+- **Dependent Services**: `ppos-preflight-service`, `ppos-preflight-worker`, `ppos-control-plane`.
+- **External Dependencies**: Redis (for FSS and Queuing), MySQL (for persistence).
 
-## Technologies Used
-
-- **Frontend:** React 19 + Vite (Modern, fast, and type-safe).
-- **Backend Bridge:** Node.js 22 + Express (PPOS Service Connector).
-- **Security:** JWT-based Enterprise Auth with PPOS support.
-- **Infrastructure:** PrintPrice OS V2 (Dockerized MySQL, Redis, Temporal, RabbitMQ).
-- **Deployment:** PM2 for the application bridge, Docker for the OS core.
-
-## Getting Started
-
-### Prerequisites
-
-- **PrintPrice OS V2** running in Docker (on your server or locally).
-- **Node.js 22+**.
+## 6. Local Development
 
 ### Installation
+```bash
+npm install
+```
 
-1. Clone the repository:
-   ```bash
-   git clone -b release/v2.1.2-certified https://github.com/drleuman/PrintPricePro_Preflight.git
-   cd PrintPricePro_Preflight
-   ```
+### Usage
+This library is consumed via the `@ppos/shared-infra` namespace.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+```javascript
+const { db, queue, policyEnforcementService } = require('@ppos/shared-infra');
 
-3. Configure Environment Variables:
-   Create a `.env` file based on the local setup:
-   ```env
-   NODE_ENV=production
-   PORT=3000
-   DATABASE_URL=mysql://ppos_user:ppos_pass@localhost:3307/printprice_os
-   REDIS_URL=redis://localhost:6380
-   PPOS_SERVICE_URL=https://api.printprice.pro
-   ```
+// Example: Evaluating a policy
+const decision = await policyEnforcementService.evaluate({
+    tenantId: 'tenant-123',
+    operation: 'print_heavy_asset'
+});
+```
 
-4. Build the Frontend:
-   ```bash
-   npm run build
-   ```
+## 7. Environment Variables
+| Variable | Description | Default |
+| :--- | :--- | :--- |
+| `DATABASE_URL` | MySQL Connection String | N/A |
+| `REDIS_HOST` | Redis Hostname | `127.0.0.1` |
+| `REDIS_PORT` | Redis Port | `6379` |
+| `PPOS_REGION_ID` | Current Regional ID | `global` |
 
-5. Start the Application:
-   ```bash
-   npm start
-   ```
-
-## Production Deployment
-
-This app is designed to be deployed alongside the PrintPrice OS. For detailed server setup instructions, refer to the [Production Walkthrough](docs/DEPLOYMENT.md).
+## 8. Version Baseline
+**Current Version**: `v1.9.0` (Federated Health & Decoupling Pass)
 
 ---
-*Certified by Antigravity Automation Framework — Phase 10 Intelligence Layer.*
+© 2026 PrintPrice. Distributed Execution Infrastructure.

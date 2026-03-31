@@ -1,7 +1,6 @@
 version: "3.8"
 
 services:
-
   ppos-preflight-service:
     build:
       context: ../
@@ -21,9 +20,9 @@ services:
       REDIS_HOST: ppos-redis
       REDIS_PORT: 6379
       ADMIN_API_KEY: ${ADMIN_API_KEY:-ppos-staging-token-2026}
-      JWT_SECRET: ${JWT_SECRET:-85Kr/w0fiPkDHsisReEPBXhPVVJyVej5Fcy1dU3MvuQ=}
       PPOS_REGION_ID: eu-central-1
       PPOS_UPLOADS_DIR: /tmp/ppos-preflight
+      JWT_SECRET: 85Kr/w0fiPkDHsisReEPBXhPVVJyVej5Fcy1dU3MvuQ=
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
     networks:
@@ -47,9 +46,9 @@ services:
       MYSQL_DATABASE: printprice_os
       REDIS_HOST: ppos-redis
       REDIS_PORT: 6379
-      JWT_SECRET: ${JWT_SECRET:-85Kr/w0fiPkDHsisReEPBXhPVVJyVej5Fcy1dU3MvuQ=}
       PPOS_REGION_ID: eu-central-1
       PPOS_UPLOADS_DIR: /tmp/ppos-preflight
+      JWT_SECRET: 85Kr/w0fiPkDHsisReEPBXhPVVJyVej5Fcy1dU3MvuQ=
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
     networks:

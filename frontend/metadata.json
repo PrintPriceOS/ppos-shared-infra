@@ -1,5 +1,0 @@
-{
-  "name": "PDF Preflight Check",
-  "description": "A client-side tool to perform a preflight analysis on PDF documents before printing, detailing technical issues and suggesting resolutions.",
-  "requestFramePermissions": []
-}
