@@ -18,6 +18,7 @@
 !/frontend/
 !/config/
 !/packages/
+!/scripts/
 !/*.sql
 !/*.yml
 !/*.yaml
