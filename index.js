@@ -58,6 +58,7 @@ const policyCacheManager = require('./packages/federation/PolicyCacheManager');
 const RegionStalenessEvaluator = require('./packages/federation/RegionStalenessEvaluator');
 const emergencyRestrictionManager = require('./packages/federation/EmergencyRestrictionManager');
 const runtimePolicyResolver = require('./packages/federation/RuntimePolicyResolver');
+const industrialEvents = require('./packages/data/industrialEvents');
 
 module.exports = {
     db,
@@ -118,5 +119,13 @@ module.exports = {
     policyCacheManager,
     RegionStalenessEvaluator,
     emergencyRestrictionManager,
-    runtimePolicyResolver
+    runtimePolicyResolver,
+
+    // Industrial Event Transport Layer
+    industrialEvents,
+    INDUSTRIAL_EVENT_TYPES: industrialEvents.INDUSTRIAL_EVENT_TYPES,
+    INDUSTRIAL_QUEUE_NAMES: industrialEvents.INDUSTRIAL_QUEUE_NAMES,
+    createIndustrialEventEnvelope: industrialEvents.createIndustrialEventEnvelope,
+    publishIndustrialEvent: industrialEvents.publishIndustrialEvent,
+    createIndustrialEventWorker: industrialEvents.createIndustrialEventWorker
 };

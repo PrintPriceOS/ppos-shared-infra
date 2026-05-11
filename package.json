@@ -14,7 +14,9 @@
     "node": ">=20 <21 || >=22"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:industrial-events": "node scripts/test-industrial-events.js",
+    "check": "node -c index.js && node -c packages/data/queue.js && node -c packages/data/industrialEvents.js && node -c scripts/test-industrial-events.js"
   },
   "dependencies": {
     "axios": "^1.13.2",

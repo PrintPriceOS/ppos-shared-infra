@@ -1,3 +1,7 @@
+# PPOS Preflight Service Deployment
+# WARNING: The following file contains hardcoded secrets for staging/development.
+# TODO: Move JWT_SECRET, MYSQL_PASSWORD, and ADMIN_API_KEY to a secure secret manager or environment variables in production.
+
 version: "3.8"
 
 services:
