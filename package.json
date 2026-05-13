@@ -15,9 +15,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:contracts": "node scripts/test-preflight-contracts.js",
     "test:industrial-events": "node scripts/test-industrial-events.js",
     "verify-tools": "node scripts/verify-industrial-tools.js",
-    "check": "node -c index.js && node -c packages/data/queue.js && node -c packages/data/industrialEvents.js && node -c scripts/test-industrial-events.js && node -c scripts/verify-industrial-tools.js"
+    "check": "node -c index.js && node -c packages/data/queue.js && node -c packages/data/industrialEvents.js && node -c scripts/test-industrial-events.js && node -c scripts/verify-industrial-tools.js && node -c scripts/test-preflight-contracts.js"
   },
   "dependencies": {
     "axios": "^1.16.0",

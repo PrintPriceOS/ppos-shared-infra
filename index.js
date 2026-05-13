@@ -60,6 +60,7 @@ const RegionStalenessEvaluator = require('./packages/federation/RegionStalenessE
 const emergencyRestrictionManager = require('./packages/federation/EmergencyRestrictionManager');
 const runtimePolicyResolver = require('./packages/federation/RuntimePolicyResolver');
 const industrialEvents = require('./packages/data/industrialEvents');
+const { FAILURE_CATEGORIES, SCORE_BASIS, PreflightIntegrityContract } = require('./packages/contracts');
 
 module.exports = {
     db,
@@ -129,5 +130,10 @@ module.exports = {
     INDUSTRIAL_QUEUE_NAMES: industrialEvents.INDUSTRIAL_QUEUE_NAMES,
     createIndustrialEventEnvelope: industrialEvents.createIndustrialEventEnvelope,
     publishIndustrialEvent: industrialEvents.publishIndustrialEvent,
-    createIndustrialEventWorker: industrialEvents.createIndustrialEventWorker
+    createIndustrialEventWorker: industrialEvents.createIndustrialEventWorker,
+
+    // Preflight Orchestration Contracts
+    FAILURE_CATEGORIES,
+    SCORE_BASIS,
+    PreflightIntegrityContract
 };
