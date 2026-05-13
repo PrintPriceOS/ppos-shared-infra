@@ -7,6 +7,7 @@ const ciActivation = require('./packages/ops/CIActivationService');
 const repoProvisioner = require('./packages/ops/RepoProvisioner');
 const secretManager = require('./packages/ops/SecretManager');
 const metricsService = require('./packages/ops/MetricsService');
+const IndustrialToolDiagnostics = require('./packages/ops/IndustrialToolDiagnostics');
 const policyEnforcementService = require('./packages/governance/policyEnforcementService');
 const resourceGovernanceService = require('./packages/governance/resourceGovernanceService');
 const fairSchedulerService = require('./packages/governance/fairSchedulerService');
@@ -70,6 +71,7 @@ module.exports = {
     repoProvisioner,
     secretManager,
     metricsService,
+    IndustrialToolDiagnostics,
     policyEnforcementService,
     resourceGovernanceService,
     fairSchedulerService,

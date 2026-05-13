@@ -19,6 +19,8 @@
 !/config/
 !/packages/
 !/scripts/
+!/recipes/
+!/deployment/
 !/*.sql
 !/*.yml
 !/*.yaml

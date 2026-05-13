@@ -1,0 +1,42 @@
+{
+  "$schema": "https://printprice.os/schemas/deployment-template.v1.json",
+  "deploymentTarget": "production-cluster-eu-central-1",
+  "orchestratorEngine": "docker-compose-production",
+  "manifestVersion": "2.4.125",
+  "containers": {
+    "service": {
+      "imageName": "ppos/preflight-service:production",
+      "targetReplicas": 2,
+      "mandatoryTools": [
+        "/usr/bin/pdfinfo",
+        "/usr/bin/pdfimages",
+        "/usr/bin/mutool",
+        "gs"
+      ],
+      "healthcheckProbe": {
+        "command": "node ppos-shared-infra/scripts/verify-industrial-tools.js",
+        "failureThreshold": 1,
+        "actionOnFailure": "FAIL_LOUD_DEGRADE"
+      }
+    },
+    "worker": {
+      "imageName": "ppos/preflight-worker:production",
+      "targetReplicas": 4,
+      "mandatoryTools": [
+        "/usr/bin/pdfinfo",
+        "/usr/bin/pdfimages",
+        "/usr/bin/mutool",
+        "gs"
+      ],
+      "healthcheckProbe": {
+        "command": "node ppos-shared-infra/scripts/verify-industrial-tools.js",
+        "failureThreshold": 1,
+        "actionOnFailure": "FAIL_LOUD_DEGRADE"
+      }
+    }
+  },
+  "operationalConstraints": {
+    "allowSilentFallback": false,
+    "mockingEnabled": false
+  }
+}
