@@ -67,7 +67,18 @@ class IndustrialToolDiagnostics {
 
         // Verify primary ICC Profile path availability
         const iccCandidate = process.env.PPOS_ICC_PROFILE_PATH || '/app/icc-profiles/PSO_Coated_v3.icc';
+        const cmykCandidate = process.env.PPOS_CMYK_PROFILE_PATH || '/app/icc-profiles/PSO_Coated_v3.icc';
         const iccStatus = fs.existsSync(iccCandidate) ? 'PRESENT' : 'MISSING_OR_UNMOUNTED';
+        const cmykStatus = fs.existsSync(cmykCandidate) ? 'PRESENT' : 'MISSING_OR_UNMOUNTED';
+
+        // Rejection check: verify no host path contamination is present in runtime container env
+        let envClean = true;
+        for (const [key, val] of Object.entries(process.env)) {
+            if (val && typeof val === 'string' && val.includes('/opt/printprice-os')) {
+                console.warn(`[INDUSTRIAL-ENV-WARNING] Found contaminated host path in process.env.${key}=${val}`);
+                envClean = false;
+            }
+        }
 
         // Print output exactly matching the canonical production contract
         console.log('[INDUSTRIAL-TOOLS]');
@@ -79,6 +90,8 @@ class IndustrialToolDiagnostics {
         console.log(`file=${report.file} (${versions.file})`);
         console.log(`storage_writability=${storageStatus}`);
         console.log(`icc_profile_access=${iccStatus}`);
+        console.log(`cmyk_profile_access=${cmykStatus}`);
+        console.log(`container_env_clean=${envClean ? 'OK' : 'CONTAMINATED'}`);
 
         if (missingAny) {
             console.error('[INDUSTRIAL-TOOLS-ERROR] Critical failure: Mandatory PDF diagnosis tools are missing from the container environment.');
@@ -92,7 +105,7 @@ class IndustrialToolDiagnostics {
             throw error;
         }
 
-        return { report, versions, storageStatus, iccStatus };
+        return { report, versions, storageStatus, iccStatus, cmykStatus, envClean };
     }
 }
 
