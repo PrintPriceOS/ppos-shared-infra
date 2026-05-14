@@ -6,16 +6,22 @@ FROM node:20-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Task 2: Permanent installation of industrial extraction and diagnostic tools
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     poppler-utils \
     mupdf-tools \
     ghostscript \
+    qpdf \
+    libimage-exiftool-perl \
+    which \
+    file \
     && rm -rf /var/lib/apt/lists/*
 
 # Task 3: Build-time verification to guarantee final image compatibility
 RUN which pdfinfo && \
     which pdfimages && \
     which mutool && \
+    which qpdf && \
+    which file && \
     gs --version
 
 # Set consistent working directory

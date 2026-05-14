@@ -25,6 +25,7 @@ services:
       PPOS_REGION_ID: eu-central-1
       PPOS_UPLOADS_DIR: /tmp/ppos-preflight
       NODE_ENV: production
+      PREFLIGHT_STRICT_FORENSIC_MODE: "true"
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
     networks:
@@ -57,6 +58,7 @@ services:
       PPOS_REGION_ID: eu-central-1
       PPOS_UPLOADS_DIR: /tmp/ppos-preflight
       NODE_ENV: production
+      PREFLIGHT_STRICT_FORENSIC_MODE: "true"
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
     networks:

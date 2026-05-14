@@ -26,9 +26,17 @@ services:
       ADMIN_API_KEY: ${ADMIN_API_KEY:-ppos-staging-token-2026}
       PPOS_REGION_ID: eu-central-1
       PPOS_UPLOADS_DIR: /tmp/ppos-preflight
+      PPOS_STORAGE_BASE: /tmp/ppos-preflight
+      PPOS_TEMP_DIR: /tmp/ppos-preflight
+      PPOS_ICC_PROFILE_PATH: /app/icc-profiles/PSO_Coated_v3.icc
+      PPOS_CMYK_PROFILE_PATH: /app/icc-profiles/PSO_Coated_v3.icc
+      PPOS_DEFAULT_RGB_PROFILE_PATH: /usr/share/color/icc/ghostscript/srgb.icc
+      PPOS_DEFAULT_CMYK_FALLBACK_PROFILE_PATH: /usr/share/color/icc/ghostscript/default_cmyk.icc
       JWT_SECRET: 85Kr/w0fiPkDHsisReEPBXhPVVJyVej5Fcy1dU3MvuQ=
+      PREFLIGHT_STRICT_FORENSIC_MODE: "true"
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
+      - /opt/printprice-os/ppos-preflight-worker/icc-profiles:/app/icc-profiles:ro
     networks:
       - ppos-network
 
@@ -52,9 +60,17 @@ services:
       REDIS_PORT: 6379
       PPOS_REGION_ID: eu-central-1
       PPOS_UPLOADS_DIR: /tmp/ppos-preflight
+      PPOS_STORAGE_BASE: /tmp/ppos-preflight
+      PPOS_TEMP_DIR: /tmp/ppos-preflight
+      PPOS_ICC_PROFILE_PATH: /app/icc-profiles/PSO_Coated_v3.icc
+      PPOS_CMYK_PROFILE_PATH: /app/icc-profiles/PSO_Coated_v3.icc
+      PPOS_DEFAULT_RGB_PROFILE_PATH: /usr/share/color/icc/ghostscript/srgb.icc
+      PPOS_DEFAULT_CMYK_FALLBACK_PROFILE_PATH: /usr/share/color/icc/ghostscript/default_cmyk.icc
       JWT_SECRET: 85Kr/w0fiPkDHsisReEPBXhPVVJyVej5Fcy1dU3MvuQ=
+      PREFLIGHT_STRICT_FORENSIC_MODE: "true"
     volumes:
       - ppos-uploads:/tmp/ppos-preflight
+      - /opt/printprice-os/ppos-preflight-worker/icc-profiles:/app/icc-profiles:ro
     networks:
       - ppos-network
 
